@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCI Portfolio | Your Name</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            width: 100%;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #a1a1aa;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Section styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #ffffff, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Project cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .project-image-icon {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+            z-index: 1;
+            position: relative;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .project-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .project-summary {
+            color: #a1a1aa;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-details {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #6366f1;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-content {
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        /* Research section */
+        .research-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .research-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .research-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(99, 102, 241, 0.15));
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 40% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 60% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .research-image-icon {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 1;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .research-card:hover {
+            transform: translateX(10px);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .research-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        /* Biography section */
+        .biography {
+            padding: 6rem 0 2rem;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .biography-container {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .bio-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border: 2px solid rgba(99, 102, 241, 0.5);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .bio-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bio-content p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .biography-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Contact section */
+        .contact {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            color: #a1a1aa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #6366f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-particles" id="particles"></div>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>HCI Designer & Researcher</h1>
+                    <p>Creating meaningful human-computer interactions through research-driven design and innovative technology solutions</p>
+                    <a href="#design" class="cta-button">Explore My Work</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- New biography section -->
+        <section id="about" class="biography">
+            <div class="container">
+                <div class="biography-container">
+                    <div class="bio-image">👩‍💻</div>
+                    <div class="bio-content">
+                        <h2>About Me</h2>
+                        <p>I'm a Human-Computer Interaction specialist with expertise in designing inclusive digital experiences. With a background in computer science and psychology, I focus on creating technology that truly serves human needs and addresses social challenges.</p>
+                        <p>My research and design work spans various domains including immersive technologies, AI ethics, and community-building platforms. I'm particularly passionate about using technology to amplify underrepresented voices and create more equitable digital spaces.</p>
+                        <p>Currently, I'm exploring the intersection of emerging technologies and social impact, with a focus on how thoughtful design can address complex human challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="design" class="section">
+            <div class="container">
+                <h2 class="section-title">🔷 HCI Design Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in-up">
+                        <div class="project-image">
+                            <div class="project-image-icon">📱</div>
+                        </div>
+                        <div class="project-number">1</div>
+                        <h3>Building Interactive and Localized Bystander Awareness Training Applications</h3>
+                        <p class="project-summary">Designed an AR-based, geolocation-enabled interactive training application to raise awareness and teach intervention strategies for sexual assault scenarios, with emphasis on cultural and geographic localization.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverables</div>
+                                <div class="detail-content">Android AR application, conversational agent, clickable prototypes, user personas, scenario-based interaction flows, usability testing report</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Skills</div>
+                                <div class="skills-list">
+                                    <span class="skill-tag">UX Research</span>
+                                    <span class="skill-tag">Human-Centered Design</span>
+                                    <span class="skill-tag">Prototyping</span>
+                                    <span class="skill-tag">Usability Assessment</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Impact</div>
+                                <div class="detail-content">Recognized at CHI 2023 for outstanding transformative application. Shaped policy conversations around localized safety training.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in-up">
+                        <div class="project-image">
+                            <div class="project-image-icon">👥</div>
+                        </div>
+                        <div class="project-number">2</div>
+                        <h3>Connecting Women of Color in Computer Science</h3>
+                        <p class="project-summary">Designed a mobile-first platform to support networking, mentorship, and community building among women of color in computer science, connecting students with events, mentors, and career opportunities.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverables</div>
+                                <div class="detail-content">High-fidelity mobile prototype, user journey maps, community research findings</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Skills</div>
+                                <div class="skills-list">
+                                    <span class="skill-tag">Inclusive Design</span>
+                                    <span class="skill-tag">Mobile UX</span>
+                                    <span class="skill-tag">Community Research</span>
+                                    <span class="skill-tag">Information Architecture</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Impact</div>
+                                <div class="detail-content">Received positive feedback from early user testing and advocacy groups; informed broader DEI tech initiatives.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in-up">
+                        <div class="project-image">
+                            <div class="project-image-icon">🔗</div>
+                        </div>
+                        <div class="project-number">3</div>
+                        <h3>Blockchain VR Copyright System</h3>
+                        <p class="project-summary">Explored emerging technology to develop a novel copyright system allowing artists to register, display, and protect their digital creations in immersive VR spaces using blockchain authentication.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverables</div>
+                                <div class="detail-content">VR concept demo, technical documentation, blockchain use case modeling, usability tests</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Skills</div>
+                                <div class="skills-list">
+                                    <span class="skill-tag">Blockchain Theory</span>
+                                    <span class="skill-tag">Immersive Design</span>
+                                    <span class="skill-tag">Speculative Prototyping</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Impact</div>
+                                <div class="detail-content">User tested with artists to identify potential benefits of blockchain validation to artistry</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in-up">
+                        <div class="project-number">4</div>
+                        <h3>Navy Squadron Readiness Dashboards</h3>
+                        <p class="project-summary">Collaborated with military stakeholders to redesign dashboards used by Navy officers to assess squadron readiness, improving usability and interpretability across multiple performance metrics.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Deliverables</div>
+                                <div class="detail-content">Revised dashboard wireframes, heuristic evaluations, design recommendations, data recommendations</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Skills</div>
+                                <div class="skills-list">
+                                    <span class="skill-tag">Qualitative Interviewing</span>
+                                    <span class="skill-tag">Cognitive Load Reduction</span>
+                                    <span class="skill-tag">Human-AI Collaboration</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Impact</div>
+                                <div class="detail-content">Led to published papers on shared responsibility models for AI errors in decision making. Improved decision-making speed and accuracy.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in-up">
+                        <div class="project-number">5</div>
+                        <h3>AI-Based Moderators for Virtual Spaces</h3>
+                        <p class="project-summary">Investigated AI moderation for online community interactions in immersive environments, addressing transparency, fairness, and escalation paths while preserving user experience.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Skills</div>
+                                <div class="skills-list">
+                                    <span class="skill-tag">AI Design</span>
+                                    <span class="skill-tag">User Safety Research</span>
+                                    <span class="skill-tag">Virtual Reality Design</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Impact</div>
+                                <div class="detail-content">Prompted internal policy discussions around moderation in partnering online communities.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in-up">
+                        <div class="project-number">6</div>
+                        <h3>VR Consent Mechanisms</h3>
+                        <p class="project-summary">Designed and tested VR-native consent prompts to protect users in immersive environments, focusing on clarity, embodied interaction, and continuity of experience.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Skills</div>
+                                <div class="skills-list">
+                                    <span class="skill-tag">Embodied Interaction Design</span>
+                                    <span class="skill-tag">Virtual Reality Design</span>
+                                    <span class="skill-tag">Consent UX</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Impact</div>
+                                <div class="detail-content">Published paper outlining novel consent mechanisms for VR spaces. Presented at HCI lab showcase.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <div class="container">
+                <h2 class="section-title">🔶 HCI Research Efforts</h2>
+                <div class="research-grid">
+                    <div class="research-card fade-in-up">
+                        <div class="research-image">
+                            <div class="research-image-icon">👩‍💻</div>
+                        </div>
+                        <h3>Understanding Women Developers in AI Technology</h3>
+                        <p class="project-summary">Explored perspectives of women developers in AI, focusing on their roles, experiences, and insights about AI systems they help create.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Methods</div>
+                                <div class="detail-content">Semi-structured interviews, thematic analysis</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output</div>
+                                <div class="detail-content">Peer-reviewed publication submitted to HICSS; presented as talk at HICSS conference</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-card fade-in-up">
+                        <div class="research-image">
+                            <div class="research-image-icon">🎧</div>
+                        </div>
+                        <h3>Online Podcast Communities and Support Networks</h3>
+                        <p class="project-summary">Investigated how podcast creators and listeners develop parasocial relationships and utilize shared interests for social support online.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Methods</div>
+                                <div class="detail-content">Mixed methods, thematic analysis, focus groups</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output</div>
+                                <div class="detail-content">Comprehensive thesis approved by multiple HCI and communication experts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-card fade-in-up">
+                        <h3>AI Education Perspectives from Young Professionals</h3>
+                        <p class="project-summary">Surveyed early-career AI professionals to understand educational pathways, training gaps, and desired changes in AI curricula.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Methods</div>
+                                <div class="detail-content">Survey research, descriptive and thematic analysis</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output</div>
+                                <div class="detail-content">Contributing to working paper exploring needs to update CS education for AI innovations</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-card fade-in-up">
+                        <h3>Comparative Analysis of Podcast Genres</h3>
+                        <p class="project-summary">Explored how different podcast genres structure episodes and employ production techniques to shape listener engagement.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Methods</div>
+                                <div class="detail-content">Cross-case comparison</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Output</div>
+                                <div class="detail-content">Paper outlining thematic and technological differences between podcast genres</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <p>Interested in collaborating or learning more about my work?</p>
+                <div class="contact-links">
+                    <a href="mailto:your-email@example.com" class="contact-link">Email</a>
+                    <a href="#" class="contact-link">LinkedIn</a>
+                    <a href="#" class="contact-link">Website</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+
+        // Add staggered animation delay to project cards
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.style.animationDelay = (index * 0.1) + 's';
+        });
+
+        // Add staggered animation delay to research cards
+        document.querySelectorAll('.research-card').forEach((card, index) => {
+            card.style.animationDelay = (index * 0.1) + 's';
+        });
+    </script>
+</body>
+</html>
