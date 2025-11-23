@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Kelsea Schulenberg | AI Integration & Human-AI Collaboration Expert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: gradient-shift 15s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 0.75rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Section */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 50%, transparent 100%);
+            border-top: 1px solid var(--border);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-image-container {
+            text-align: center;
+        }
+
+        .about-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(99, 102, 241, 0.3);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+        }
+
+        /* Dissertation Section */
+        .dissertation {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border-top: 2px solid rgba(99, 102, 241, 0.2);
+            border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .dissertation-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .dissertation-intro p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .study-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .study-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .study-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .study-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.2);
+        }
+
+        .study-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .study-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .study-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .study-details {
+            display: grid;
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .study-detail {
+            padding-left: 1rem;
+            border-left: 3px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .study-detail-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .study-detail-content {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .dissertation-cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .project-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .project-image span {
+            font-size: 3rem;
+        }
+
+        .ai-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 6px;
+            color: var(--primary-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .project-summary {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 0.9rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .project-footer {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .project-footer strong {
+            color: var(--primary-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Research Section */
+        .research-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: start;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .research-image {
+            width: 200px;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .research-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .research-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .research-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .research-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .research-meta-item strong {
+            display: block;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .research-meta-item span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, transparent 0%, rgba(99, 102, 241, 0.03) 100%);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.3);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-image-container {
+                justify-self: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-card {
+                grid-template-columns: 1fr;
+            }
+
+            .research-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        /* Mobile menu button (hidden by default) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <div class="logo">KS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#dissertation">Dissertation</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Ph.D. in Human-Centered Computing</div>
+                <h1><span class="gradient-text">Dr. Kelsea Schulenberg</span></h1>
+                <h2>AI Integration & Human-AI Collaboration Expert</h2>
+                <p>Specializing in AI system design and integration in the workplace, with expertise in how AI impacts human worker evaluation, job security, and organizational dynamics.</p>
+                <div class="hero-buttons">
+                    <a href="#dissertation" class="btn btn-primary">View Dissertation Research</a>
+                    <a href="CV.pdf" class="btn btn-secondary" target="_blank">Download CV</a>
+                    <a href="Resume.pdf" class="btn btn-secondary" target="_blank">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image-container">
+                    <div class="about-image">
+                        <img src="headshot.jpg" alt="Dr. Kelsea Schulenberg">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
+                        <a href="CV.pdf" class="btn btn-secondary" target="_blank" style="font-size: 0.9rem; padding: 0.75rem 1.5rem;">Download CV</a>
+                        <a href="Resume.pdf" class="btn btn-secondary" target="_blank" style="font-size: 0.9rem; padding: 0.75rem 1.5rem;">Download Resume</a>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I hold a Ph.D. in Human-Centered Computing from Clemson University, where I specialized in AI integration in workplace environments. My research expertise centers on how the design and implementation of AI systems fundamentally impacts human worker evaluation, job security expectations, and organizational dynamics.</p>
+                    <p>My dissertation, <em>"Through Her Eyes: Centering Women's Experiences in the Design, Evaluation, and Integration of Human-AI Interaction in the Workplace,"</em> established critical linkages between AI system design and human performance evaluation, revealing how evaluator bias, AI functionality, and task allocation converge to shape workers' perceptions of job security and career stability.</p>
+                    <p>My work spans AI ethics, human-AI collaboration, feminist HCI, and creating more equitable AI-augmented workplaces. I'm particularly focused on ensuring that AI integration considers and protects the experiences of marginalized workers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dissertation Section -->
+    <section id="dissertation" class="dissertation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">🎓 Doctoral Research</span>
+                <h2 class="section-title">AI Integration in the Workplace</h2>
+                <p class="section-description">My doctoral research explored the critical intersection of AI system design, human worker evaluation, and job security in workplace environments.</p>
+            </div>
+
+            <div class="dissertation-intro">
+                <p>Through two comprehensive studies, I established frameworks for understanding how AI integration fundamentally reshapes the human work experience, with specific focus on performance evaluation practices and career security expectations.</p>
+            </div>
+
+            <div class="studies-grid">
+                <div class="study-card fade-in">
+                    <div class="study-number">1</div>
+                    <h3>AI Design and Human Worker Evaluation</h3>
+                    <p>This research established a clear empirical linkage between the functional design of AI systems and how human workers are evaluated in AI-augmented environments. I demonstrated that AI system capabilities, transparency, and decision-making authority directly influence performance assessment criteria and evaluation frameworks applied to human workers.</p>
+                    
+                    <div class="study-details">
+                        <div class="study-detail">
+                            <div class="study-detail-label">Key Findings</div>
+                            <div class="study-detail-content">AI system design characteristics significantly shape evaluation metrics, performance expectations, and perceived worker competence. The study revealed specific design patterns that either support or undermine fair human evaluation.</div>
+                        </div>
+                        <div class="study-detail">
+                            <div class="study-detail-label">Methods</div>
+                            <div class="study-detail-content">Mixed-methods approach including interviews with workers in AI-augmented roles, experimental design, and thematic analysis</div>
+                        </div>
+                        <div class="study-detail">
+                            <div class="study-detail-label">Impact</div>
+                            <div class="study-detail-content">Provides actionable guidance for organizations designing AI systems to ensure equitable worker evaluation practices</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="Evaluation.pdf" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">View Study Chapter</a>
+                    </div>
+                </div>
+
+                <div class="study-card fade-in">
+                    <div class="study-number">2</div>
+                    <h3>AI Integration and Job Security Expectations</h3>
+                    <p>This research uncovered how AI integration shapes workers' expectations and perceptions of job security. I identified a complex interplay between evaluator bias, AI system design, and task characteristics that collectively inform workers' sense of career stability and future prospects in AI-augmented workplaces.</p>
+                    
+                    <div class="study-details">
+                        <div class="study-detail">
+                            <div class="study-detail-label">Key Findings</div>
+                            <div class="study-detail-content">Job security perceptions are shaped by the interaction of three factors: how evaluators perceive AI capabilities, how AI systems are functionally designed, and the nature of tasks humans and AI perform. These factors blend to create distinct patterns of job security anxiety or confidence.</div>
+                        </div>
+                        <div class="study-detail">
+                            <div class="study-detail-label">Methods</div>
+                            <div class="study-detail-content">Longitudinal interviews, survey research, and grounded theory analysis across multiple industries</div>
+                        </div>
+                        <div class="study-detail">
+                            <div class="study-detail-label">Impact</div>
+                            <div class="study-detail-content">Offers frameworks for organizations to address job security concerns proactively during AI implementation</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="Job.pdf" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">View Study Chapter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dissertation-cta">
+                <a href="Dissertation.pdf" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 1.25rem 2.5rem;">📄 Read Full Dissertation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">💼 Portfolio</span>
+                <h2 class="section-title">AI & HCI Design Projects</h2>
+                <p class="section-description">A collection of research-driven design projects focusing on AI integration, human-computer interaction, and inclusive technology.</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <span class="ai-badge">🤖 AI Focus</span>
+                    <div class="project-image">
+                        <span>🤖</span>
+                    </div>
+                    <h3>AI-Based Moderators for Virtual Spaces</h3>
+                    <p class="project-summary">Investigated AI moderation system design for online community interactions in immersive environments, addressing transparency, fairness, and escalation paths while preserving user experience. This work directly informed my dissertation research on AI system design and human evaluation.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI System Design</span>
+                        <span class="tag">User Safety Research</span>
+                        <span class="tag">Virtual Reality</span>
+                        <span class="tag">AI Ethics</span>
+                    </div>
+                    <div class="project-footer">
+                        <strong>Impact</strong>
+                        Prompted internal policy discussions around moderation in partnering online communities and informed AI transparency best practices.
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <span class="ai-badge">🤖 AI Focus</span>
+                    <div class="project-image">
+                        <span>📊</span>
+                    </div>
+                    <h3>Navy Squadron Readiness Dashboards: Human-AI Decision Making</h3>
+                    <p class="project-summary">Collaborated with military stakeholders to redesign AI-augmented dashboards used by Navy officers to assess squadron readiness. Focused on optimizing human-AI collaboration, shared responsibility models for AI-assisted decisions, and cognitive load reduction in high-stakes environments.</p>
+                    <div class="project-tags">
+                        <span class="tag">Human-AI Collaboration</span>
+                        <span class="tag">AI-Assisted Decision Making</span>
+                        <span class="tag">Qualitative Research</span>
+                        <span class="tag">Cognitive Load Reduction</span>
+                    </div>
+                    <div class="project-footer">
+                        <strong>Impact</strong>
+                        Led to published papers on shared responsibility models for AI errors in decision making. Improved decision-making speed and accuracy while maintaining human oversight.
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="training.png" alt="Bystander Awareness Training Application">
+                    </div>
+                    <h3>Building Interactive and Localized Bystander Awareness Training Applications</h3>
+                    <p class="project-summary">Designed an AR-based, geolocation-enabled interactive training application to raise awareness and teach intervention strategies for sexual assault scenarios, with emphasis on cultural and geographic localization.</p>
+                    <div class="project-tags">
+                        <span class="tag">UX Research</span>
+                        <span class="tag">Human-Centered Design</span>
+                        <span class="tag">Prototyping</span>
+                        <span class="tag">Usability Assessment</span>
+                    </div>
+                    <div class="project-footer">
+                        <strong>Impact</strong>
+                        Recognized at CHI 2023 for outstanding transformative application. Shaped policy conversations around localized safety training.
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="women.png" alt="Connecting Women of Color in Computer Science">
+                    </div>
+                    <h3>Connecting Women of Color in Computer Science</h3>
+                    <p class="project-summary">Designed a mobile-first platform to support networking, mentorship, and community building among women of color in computer science, connecting students with events, mentors, and career opportunities.</p>
+                    <div class="project-tags">
+                        <span class="tag">Inclusive Design</span>
+                        <span class="tag">Mobile UX</span>
+                        <span class="tag">Community Research</span>
+                        <span class="tag">Information Architecture</span>
+                    </div>
+                    <div class="project-footer">
+                        <strong>Impact</strong>
+                        Received positive feedback from early user testing and advocacy groups; informed broader DEI tech initiatives.
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="blockchain.png" alt="Blockchain VR Copyright System">
+                    </div>
+                    <h3>Blockchain VR Copyright System</h3>
+                    <p class="project-summary">Explored emerging technology to develop a novel copyright system allowing artists to register, display, and protect their digital creations in immersive VR spaces using blockchain authentication.</p>
+                    <div class="project-tags">
+                        <span class="tag">Blockchain Theory</span>
+                        <span class="tag">Immersive Design</span>
+                        <span class="tag">Speculative Prototyping</span>
+                    </div>
+                    <div class="project-footer">
+                        <strong>Impact</strong>
+                        User tested with artists to identify potential benefits of blockchain validation to artistry.
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <span>🎭</span>
+                    </div>
+                    <h3>VR Consent Mechanisms</h3>
+                    <p class="project-summary">Designed and tested VR-native consent prompts to protect users in immersive environments, focusing on clarity, embodied interaction, and continuity of experience.</p>
+                    <div class="project-tags">
+                        <span class="tag">Embodied Interaction Design</span>
+                        <span class="tag">Virtual Reality Design</span>
+                        <span class="tag">Consent UX</span>
+                    </div>
+                    <div class="project-footer">
+                        <strong>Impact</strong>
+                        Published paper outlining novel consent mechanisms for VR spaces. Presented at HCI lab showcase.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">📚 Publications</span>
+                <h2 class="section-title">HCI Research Efforts</h2>
+                <p class="section-description">Academic research exploring human-AI interaction, women in technology, and inclusive computing.</p>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <div class="research-image">
+                        <img src="wai.png" alt="Women Developers in AI Technology">
+                    </div>
+                    <div class="research-content">
+                        <h3>Understanding Women Developers in AI Technology</h3>
+                        <p>Explored perspectives of women developers in AI, focusing on their roles, experiences, and insights about AI systems they help create.</p>
+                        <div class="research-meta">
+                            <div class="research-meta-item">
+                                <strong>Methods</strong>
+                                <span>Semi-structured interviews, thematic analysis</span>
+                            </div>
+                            <div class="research-meta-item">
+                                <strong>Output</strong>
+                                <span>Peer-reviewed publication submitted to HICSS; presented as talk at HICSS conference</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-image">
+                        <img src="thesis.png" alt="Online Podcast Communities and Support Networks">
+                    </div>
+                    <div class="research-content">
+                        <h3>Online Podcast Communities and Support Networks</h3>
+                        <p>Investigated how podcast creators and listeners develop parasocial relationships and utilize shared interests for social support online.</p>
+                        <div class="research-meta">
+                            <div class="research-meta-item">
+                                <strong>Methods</strong>
+                                <span>Mixed methods, thematic analysis, focus groups</span>
+                            </div>
+                            <div class="research-meta-item">
+                                <strong>Output</strong>
+                                <span>Comprehensive thesis approved by multiple HCI and communication experts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-image">
+                        <span style="font-size: 4rem;">🎓</span>
+                    </div>
+                    <div class="research-content">
+                        <h3>AI Education Perspectives from Young Professionals</h3>
+                        <p>Surveyed early-career AI professionals to understand educational pathways, training gaps, and desired changes in AI curricula.</p>
+                        <div class="research-meta">
+                            <div class="research-meta-item">
+                                <strong>Methods</strong>
+                                <span>Survey research, descriptive and thematic analysis</span>
+                            </div>
+                            <div class="research-meta-item">
+                                <strong>Output</strong>
+                                <span>Contributing to working paper exploring needs to update CS education for AI innovations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="research-card fade-in">
+                    <div class="research-image">
+                        <span style="font-size: 4rem;">🎙️</span>
+                    </div>
+                    <div class="research-content">
+                        <h3>Comparative Analysis of Podcast Genres</h3>
+                        <p>Explored how different podcast genres structure episodes and employ production techniques to shape listener engagement.</p>
+                        <div class="research-meta">
+                            <div class="research-meta-item">
+                                <strong>Methods</strong>
+                                <span>Cross-case comparison</span>
+                            </div>
+                            <div class="research-meta-item">
+                                <strong>Output</strong>
+                                <span>Paper outlining thematic and technological differences between podcast genres</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">📬 Get in Touch</span>
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-description">Interested in collaborating or learning more about my work? I'd love to hear from you.</p>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:kelseas@g.clemson.edu" class="contact-link">✉️ Email</a>
+                <a href="https://www.linkedin.com/in/kelsea-schulenberg-6bb009a9/" class="contact-link" target="_blank">💼 LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
