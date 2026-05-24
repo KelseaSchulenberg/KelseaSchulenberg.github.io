@@ -1,0 +1,435 @@
+/* Clean professional visual system shared by the public HTML pages. */
+:root {
+    --bg: #f7f5ef;
+    --surface: #fffdf8;
+    --surface-2: #eee9df;
+    --surface-3: #e3ddd1;
+    --ink: #1d252c;
+    --text: #1d252c;
+    --muted: #626a72;
+    --text-muted: #626a72;
+    --line: #d7d0c4;
+    --border: #d7d0c4;
+    --cyan: #176d66;
+    --teal: #176d66;
+    --accent-1: #176d66;
+    --accent-2: #2f5572;
+    --accent-3: #8d5732;
+    --green: #2f6f4e;
+    --amber: #9b681f;
+    --gold: #9b681f;
+    --rose: #825062;
+    --coral: #8d5732;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Aptos", "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    line-height: 1.62;
+}
+
+body::before,
+.grid-background,
+.orb {
+    display: none !important;
+}
+
+a {
+    color: inherit;
+}
+
+nav {
+    background: rgba(247, 245, 239, 0.96) !important;
+    border-bottom: 1px solid var(--line) !important;
+    box-shadow: none !important;
+}
+
+.nav-inner,
+.nav-wrapper {
+    max-width: 1180px !important;
+    padding: 0.9rem 1.5rem !important;
+}
+
+.logo {
+    color: var(--ink) !important;
+    font-family: inherit !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0 !important;
+    text-shadow: none !important;
+}
+
+.nav-links,
+.nav-menu {
+    gap: 1.2rem !important;
+}
+
+.nav-links a,
+.nav-menu a {
+    color: var(--muted) !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+}
+
+.nav-links a:hover,
+.nav-menu a:hover {
+    color: var(--accent-1) !important;
+}
+
+.nav-menu a::before {
+    content: "" !important;
+}
+
+.container {
+    max-width: 1120px !important;
+}
+
+.hero {
+    min-height: auto !important;
+    padding: 5.25rem 0 3.5rem !important;
+}
+
+.hero-grid {
+    align-items: center !important;
+    gap: 3rem !important;
+}
+
+.eyebrow,
+.hero-label,
+.section-label,
+.specialty-kicker,
+.project-label,
+.case-label {
+    color: var(--accent-1) !important;
+    font-family: inherit !important;
+    font-size: 0.78rem !important;
+    font-weight: 650 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+
+h1,
+.hero h1 {
+    color: var(--ink) !important;
+    font-size: clamp(2.35rem, 4.8vw, 4.35rem) !important;
+    letter-spacing: 0 !important;
+    line-height: 1.06 !important;
+    max-width: 880px !important;
+}
+
+h2,
+.hero h2,
+.section-title,
+.section-heading h2 {
+    color: var(--ink) !important;
+    letter-spacing: 0 !important;
+}
+
+.hero h2 {
+    color: var(--muted) !important;
+    font-size: clamp(1.1rem, 1.7vw, 1.42rem) !important;
+    font-weight: 500 !important;
+}
+
+.hero-copy,
+.hero-description,
+.section-description,
+.section-heading p,
+.snapshot p,
+.profile-panel p,
+.specialty p,
+.link-card p,
+.contact-panel p,
+.metric span,
+.proof span,
+.method li,
+.case p,
+.case li,
+.artifact p,
+.publication p,
+.project p,
+.project-summary,
+.research-info p,
+.study-desc,
+.study-detail p,
+.diss-intro {
+    color: var(--muted) !important;
+}
+
+.gradient-text {
+    background: none !important;
+    color: var(--accent-1) !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+.actions,
+.hero-actions {
+    gap: 0.75rem !important;
+}
+
+.btn {
+    border-radius: 3px !important;
+    box-shadow: none !important;
+    font-family: inherit !important;
+    font-size: 0.9rem !important;
+    font-weight: 650 !important;
+    letter-spacing: 0 !important;
+    min-height: 40px !important;
+    padding: 0.66rem 0.92rem !important;
+}
+
+.btn-primary {
+    background: var(--accent-1) !important;
+    border: 1px solid var(--accent-1) !important;
+    color: #ffffff !important;
+}
+
+.btn-secondary {
+    background: transparent !important;
+    border: 1px solid var(--line) !important;
+    color: var(--ink) !important;
+}
+
+.btn-resume {
+    background: var(--accent-2) !important;
+    border: 1px solid var(--accent-2) !important;
+    color: #ffffff !important;
+}
+
+.btn-cv {
+    background: var(--accent-3) !important;
+    border: 1px solid var(--accent-3) !important;
+    color: #ffffff !important;
+}
+
+.btn:hover {
+    border-color: var(--accent-1) !important;
+    box-shadow: none !important;
+    color: inherit;
+    transform: none !important;
+}
+
+.btn-primary:hover,
+.btn-resume:hover,
+.btn-cv:hover {
+    color: #ffffff !important;
+}
+
+section {
+    padding: 3.6rem 0 !important;
+}
+
+section[id] {
+    scroll-margin-top: 5.5rem;
+}
+
+.section-header,
+.section-heading {
+    margin-bottom: 1.8rem !important;
+}
+
+.section-title,
+.section-heading h2 {
+    font-size: clamp(1.75rem, 2.8vw, 2.55rem) !important;
+    line-height: 1.15 !important;
+}
+
+.profile-panel,
+.hero-card,
+.snapshot,
+.specialty,
+.link-card,
+.contact-panel,
+.metric,
+.proof,
+.method,
+.case,
+.artifact,
+.publication,
+.project,
+.research-item,
+.study,
+.diss-intro,
+.hero-panel {
+    background: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 1px 2px rgba(29, 37, 44, 0.06) !important;
+}
+
+.hero-card,
+.profile-panel,
+.snapshot {
+    padding: 1.25rem !important;
+}
+
+.hero-card::before,
+.study::before {
+    display: none !important;
+}
+
+.profile-image {
+    border: 2px solid var(--line) !important;
+    box-shadow: none !important;
+}
+
+.profile-links a,
+.card-link {
+    background: transparent !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 3px !important;
+    color: var(--ink) !important;
+}
+
+.profile-links a:hover,
+.card-link:hover {
+    border-color: var(--accent-1) !important;
+    color: var(--accent-1) !important;
+    transform: none !important;
+}
+
+.specialty-grid,
+.link-grid,
+.method-grid,
+.case-grid,
+.artifact-grid,
+.project-grid,
+.library-grid,
+.projects-grid,
+.metric-grid,
+.proof-grid {
+    gap: 1rem !important;
+}
+
+.tag {
+    background: #f4f1ea !important;
+    border: 1px solid #ddd6ca !important;
+    border-radius: 3px !important;
+    color: #46525b !important;
+    font-family: inherit !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    padding: 0.32rem 0.5rem !important;
+}
+
+.metric,
+.proof {
+    min-height: 130px !important;
+}
+
+@media (min-width: 960px) {
+    .metric-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    }
+}
+
+.metric strong,
+.proof strong,
+.study-num {
+    color: var(--accent-1) !important;
+    opacity: 1 !important;
+    font-weight: 750 !important;
+}
+
+.case strong,
+.project-impact strong {
+    color: var(--accent-1) !important;
+}
+
+.evidence {
+    background: #24313a !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #f8fafc !important;
+}
+
+.evidence strong {
+    color: #8fd8cf !important;
+}
+
+.evidence span {
+    color: #edf5f7 !important;
+}
+
+.project:hover,
+.research-item:hover,
+.study:hover {
+    border-color: var(--accent-1) !important;
+    box-shadow: 0 2px 8px rgba(29, 37, 44, 0.08) !important;
+    transform: none !important;
+}
+
+.research-item::after {
+    display: none !important;
+}
+
+.project-media,
+.project-image,
+.research-image {
+    background: var(--surface-2) !important;
+    border-color: var(--line) !important;
+}
+
+.project-media.visual {
+    background: var(--surface-2) !important;
+}
+
+.visual-frame {
+    border-color: rgba(23, 32, 42, 0.16) !important;
+}
+
+.visual-bar {
+    background: var(--accent-1) !important;
+}
+
+.visual-row {
+    background: rgba(23, 32, 42, 0.14) !important;
+}
+
+.contact-panel {
+    align-items: center;
+}
+
+footer {
+    border-top: 1px solid var(--line) !important;
+    color: var(--muted) !important;
+}
+
+@media (max-width: 768px) {
+    .container,
+    .nav-inner,
+    .nav-wrapper {
+        width: calc(100vw - 2rem) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .nav-menu {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.7rem 1rem !important;
+    }
+
+    .nav-links {
+        flex-wrap: wrap !important;
+        gap: 0.55rem 0.9rem !important;
+    }
+
+    .nav-links a,
+    .nav-menu a {
+        font-size: 0.84rem !important;
+    }
+
+    .hero {
+        padding-top: 3.4rem !important;
+    }
+
+    h1,
+    .hero h1 {
+        font-size: clamp(2.1rem, 11vw, 3.3rem) !important;
+    }
+}

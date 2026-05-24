@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX & HCI Portfolio PDF | Dr. Kelsea Schulenberg</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: Letter;
+            margin: 0.55in;
+        }
+
+        :root {
+            --ink: #111827;
+            --muted: #4b5563;
+            --line: #d7dde7;
+            --panel: #f5f8fb;
+            --teal: #087a73;
+            --gold: #9a6a12;
+            --coral: #a43f32;
+        }
+
+        body {
+            color: var(--ink);
+            font-family: "Arial", "Helvetica", sans-serif;
+            font-size: 10.2pt;
+            line-height: 1.42;
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 31pt;
+            letter-spacing: -0.02em;
+            line-height: 1.02;
+            margin-top: 0.08in;
+            max-width: 7.2in;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--line);
+            font-size: 14pt;
+            letter-spacing: 0.02em;
+            margin: 0.24in 0 0.12in;
+            padding-bottom: 0.05in;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 11pt;
+            line-height: 1.2;
+            margin-bottom: 0.04in;
+        }
+
+        .contact {
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+            display: flex;
+            font-size: 9.5pt;
+            gap: 0.18in;
+            justify-content: space-between;
+            padding-bottom: 0.12in;
+        }
+
+        .contact strong {
+            color: var(--ink);
+        }
+
+        .eyebrow {
+            color: var(--teal);
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            color: var(--muted);
+            font-size: 12.3pt;
+            line-height: 1.35;
+            margin-top: 0.12in;
+            max-width: 7.2in;
+        }
+
+        .metrics {
+            display: grid;
+            gap: 0.09in;
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 0.22in;
+        }
+
+        .metric {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            min-height: 0.82in;
+            padding: 0.1in;
+        }
+
+        .metric strong {
+            color: var(--teal);
+            display: block;
+            font-size: 22pt;
+            line-height: 1;
+            margin-bottom: 0.04in;
+        }
+
+        .metric span {
+            color: var(--muted);
+            display: block;
+            font-size: 8.5pt;
+            line-height: 1.24;
+        }
+
+        .three-col,
+        .two-col {
+            display: grid;
+            gap: 0.12in;
+        }
+
+        .three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .box,
+        .project {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            break-inside: avoid;
+            padding: 0.12in;
+        }
+
+        .box.teal,
+        .project.teal {
+            border-top: 4px solid var(--teal);
+        }
+
+        .box.gold,
+        .project.gold {
+            border-top: 4px solid var(--gold);
+        }
+
+        .box.coral,
+        .project.coral {
+            border-top: 4px solid var(--coral);
+        }
+
+        ul {
+            margin: 0.06in 0 0;
+            padding-left: 0.16in;
+        }
+
+        li {
+            margin: 0.025in 0;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .label {
+            color: var(--teal);
+            font-size: 8.2pt;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .project {
+            margin-bottom: 0.12in;
+        }
+
+        .project p {
+            color: var(--muted);
+            margin: 0.035in 0 0.055in;
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.045in;
+            margin-top: 0.08in;
+        }
+
+        .pill {
+            background: #eef7f6;
+            border: 1px solid #c8dfdc;
+            border-radius: 999px;
+            color: #105b56;
+            font-size: 8.2pt;
+            font-weight: 700;
+            padding: 0.025in 0.07in;
+        }
+
+        .artifact-grid {
+            display: grid;
+            gap: 0.09in;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .artifact {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            padding: 0.09in;
+        }
+
+        .artifact p {
+            color: var(--muted);
+            font-size: 8.8pt;
+            line-height: 1.28;
+        }
+
+        .footer {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 8.2pt;
+            margin-top: 0.18in;
+            padding-top: 0.08in;
+        }
+
+        .page-break {
+            break-before: page;
+        }
+    </style>
+</head>
+<body>
+    <header class="contact">
+        <div><strong>Dr. Kelsea Schulenberg</strong> | Ph.D., Human-Centered Computing</div>
+        <div>kelseas@g.clemson.edu | kelseaschulenberg.github.io | LinkedIn: kelsea-schulenberg-6bb009a9</div>
+    </header>
+
+    <main>
+        <section>
+            <div class="eyebrow">UX & HCI portfolio</div>
+            <h1>Human-centered design for complex, high-stakes technology.</h1>
+            <p class="subhead">I design, evaluate, and communicate user experiences for dashboards, mobile training, immersive environments, community tools, and safety workflows. My work connects HCI research depth with practical interaction design.</p>
+
+            <div class="metrics">
+                <div class="metric"><strong>6</strong><span>UX/HCI projects across dashboards, AR, VR, mobile, community, and creator tools.</span></div>
+                <div class="metric"><strong>4</strong><span>interactive contexts: decision support, safety training, immersive spaces, and social systems.</span></div>
+                <div class="metric"><strong>3</strong><span>prototype-heavy formats: mobile app, AR experience, and VR interaction flows.</span></div>
+                <div class="metric"><strong>1</strong><span>CHI-recognized transformative application for campus safety training.</span></div>
+            </div>
+
+            <h2>Design Methods</h2>
+            <div class="three-col">
+                <div class="box teal">
+                    <h3>Discovery</h3>
+                    <ul>
+                        <li>User interviews</li>
+                        <li>Stakeholder conversations</li>
+                        <li>Workflow and task analysis</li>
+                        <li>Safety and trust considerations</li>
+                    </ul>
+                </div>
+                <div class="box gold">
+                    <h3>Design</h3>
+                    <ul>
+                        <li>Interaction flows</li>
+                        <li>Mobile-first product structure</li>
+                        <li>Dashboard information architecture</li>
+                        <li>AR/VR scenario design</li>
+                    </ul>
+                </div>
+                <div class="box coral">
+                    <h3>Evaluation</h3>
+                    <ul>
+                        <li>Usability testing</li>
+                        <li>Prototype feedback synthesis</li>
+                        <li>Cognitive load review</li>
+                        <li>Design recommendations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Technology and Product Range</h2>
+            <div class="pill-row">
+                <span class="pill">Dashboard UX</span>
+                <span class="pill">Decision support</span>
+                <span class="pill">Trust and safety</span>
+                <span class="pill">Mobile UX</span>
+                <span class="pill">AR training</span>
+                <span class="pill">VR interaction design</span>
+                <span class="pill">Creator tools</span>
+                <span class="pill">Community platforms</span>
+            </div>
+        </section>
+
+        <section class="page-break">
+            <h2>Selected UX/HCI Projects</h2>
+            <div class="two-col">
+                <article class="project teal">
+                    <div class="label">Dashboard UX | Decision support</div>
+                    <h3>Navy Squadron Readiness Dashboards</h3>
+                    <p>Redesigned readiness dashboard concepts for high-stakes assessment contexts where officers needed clearer status signals, responsibility boundaries, and reduced cognitive load.</p>
+                    <ul>
+                        <li><strong>Design focus:</strong> information hierarchy, trust calibration, review workflows.</li>
+                        <li><strong>Outcome:</strong> published insights on shared responsibility in high-stakes decision making.</li>
+                    </ul>
+                </article>
+
+                <article class="project gold">
+                    <div class="label">Trust & safety | Virtual spaces</div>
+                    <h3>Moderator Workflows for Virtual Communities</h3>
+                    <p>Designed moderation concepts for immersive community spaces, focusing on transparency, escalation, user safety, and preserving the flow of social interaction.</p>
+                    <ul>
+                        <li><strong>Design focus:</strong> escalation paths, feedback loops, user-facing transparency.</li>
+                        <li><strong>Outcome:</strong> informed moderation best practices for emerging platform contexts.</li>
+                    </ul>
+                </article>
+
+                <article class="project coral">
+                    <div class="label">AR | Mobile training</div>
+                    <h3>Interactive Bystander Awareness Training</h3>
+                    <p>Designed a mobile, geolocation-enabled AR training experience that placed users in interactive scenarios and helped them practice intervention strategies.</p>
+                    <ul>
+                        <li><strong>Design focus:</strong> situated learning, scenario flow, consequence feedback.</li>
+                        <li><strong>Outcome:</strong> recognized at CHI 2023 for outstanding transformative application.</li>
+                    </ul>
+                </article>
+
+                <article class="project teal">
+                    <div class="label">Immersive UX | Safety mechanics</div>
+                    <h3>VR Boundary and Consent Mechanics</h3>
+                    <p>Designed and evaluated VR-native interaction prompts for preventing interpersonal harm while keeping immersive experiences clear, embodied, and usable.</p>
+                    <ul>
+                        <li><strong>Design focus:</strong> timing, user control, boundary setting, continuity.</li>
+                        <li><strong>Outcome:</strong> published guidance for consent-oriented immersive spaces.</li>
+                    </ul>
+                </article>
+
+                <article class="project gold">
+                    <div class="label">VR | Creator tools</div>
+                    <h3>VR Copyright and Creator Attribution System</h3>
+                    <p>Designed a VR concept for artists to register, display, and protect digital creations in immersive environments using verifiable ownership cues.</p>
+                    <ul>
+                        <li><strong>Design focus:</strong> artist workflows, verification cues, display and discovery.</li>
+                        <li><strong>Outcome:</strong> user-tested with artists to identify trust and value signals.</li>
+                    </ul>
+                </article>
+
+                <article class="project coral">
+                    <div class="label">Mobile UX | Community platform</div>
+                    <h3>Mentorship and Community Platform for Computing Students</h3>
+                    <p>Designed a mobile-first platform to help underrepresented computing students find mentors, events, opportunities, and peer support.</p>
+                    <ul>
+                        <li><strong>Design focus:</strong> onboarding, event discovery, mentor matching, community trust.</li>
+                        <li><strong>Outcome:</strong> early user feedback shaped community-support design recommendations.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="page-break">
+            <h2>Artifacts and Strengths</h2>
+            <div class="artifact-grid">
+                <div class="artifact">
+                    <h3>Experience flows</h3>
+                    <p>Scenario paths, intervention points, moderation flows, and user journeys.</p>
+                </div>
+                <div class="artifact">
+                    <h3>Prototype concepts</h3>
+                    <p>Mobile, dashboard, AR, and VR concepts ready for stakeholder feedback.</p>
+                </div>
+                <div class="artifact">
+                    <h3>Research synthesis</h3>
+                    <p>Findings translated into design principles, product requirements, and risk notes.</p>
+                </div>
+                <div class="artifact">
+                    <h3>Decision guidance</h3>
+                    <p>Recommendations that connect user needs to implementation and policy constraints.</p>
+                </div>
+            </div>
+
+            <h2>What I Bring to UX and HCI Teams</h2>
+            <div class="two-col">
+                <div class="box teal">
+                    <h3>Design judgment</h3>
+                    <ul>
+                        <li>Comfort with complex, high-stakes workflows.</li>
+                        <li>Ability to design for safety, clarity, and decision quality.</li>
+                        <li>Experience translating research into usable interaction concepts.</li>
+                    </ul>
+                </div>
+                <div class="box gold">
+                    <h3>Cross-functional fit</h3>
+                    <ul>
+                        <li>Clear communication for product, policy, research, and engineering partners.</li>
+                        <li>Flexible across dashboards, mobile products, AR/VR, and community systems.</li>
+                        <li>Strong fit for UX research, product design research, and HCI roles.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="footer">Full web portfolio: kelseaschulenberg.github.io/ux-hci-portfolio.html</p>
+        </section>
+    </main>
+</body>
+</html>

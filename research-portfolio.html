@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portfolio | Dr. Kelsea Schulenberg</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0d0f12;
+            --surface: #171a1f;
+            --surface-2: #20242b;
+            --surface-3: #111419;
+            --cyan: #25d7f4;
+            --green: #7bd88f;
+            --rose: #ff5c8a;
+            --amber: #f6c85f;
+            --text: #f7f9fb;
+            --muted: #a8b0bc;
+            --border: #303640;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                linear-gradient(180deg, rgba(37, 215, 244, 0.08), transparent 420px),
+                linear-gradient(90deg, rgba(255, 92, 138, 0.06), transparent 55%),
+                var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(247, 249, 251, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(247, 249, 251, 0.035) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(13, 15, 18, 0.86);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-inner {
+            align-items: center;
+            display: flex;
+            gap: 2rem;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1240px;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            color: var(--cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            align-items: center;
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1240px;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .hero {
+            padding: 7rem 0 4rem;
+        }
+
+        .hero-grid {
+            align-items: end;
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: minmax(0, 1fr) 360px;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(3.2rem, 7vw, 6.6rem);
+            letter-spacing: 0;
+            line-height: 0.98;
+            max-width: 980px;
+        }
+
+        .hero-copy {
+            color: var(--muted);
+            font-size: clamp(1.08rem, 2vw, 1.35rem);
+            margin-top: 1.5rem;
+            max-width: 780px;
+        }
+
+        .hero-panel {
+            background: rgba(23, 26, 31, 0.92);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .hero-panel h2 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-panel p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            align-items: center;
+            border-radius: 4px;
+            display: inline-flex;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            gap: 0.5rem;
+            min-height: 44px;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--cyan);
+            color: #061014;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn:hover {
+            border-color: var(--cyan);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 4.5rem 0;
+        }
+
+        .section-heading {
+            margin-bottom: 2rem;
+            max-width: 820px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.08;
+            margin-bottom: 0.9rem;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .metric-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .metric {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            min-height: 180px;
+            padding: 1.25rem;
+        }
+
+        .metric strong {
+            color: var(--text);
+            display: block;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            line-height: 1;
+            margin-bottom: 0.8rem;
+        }
+
+        .metric span {
+            color: var(--muted);
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .metric:nth-child(1) strong {
+            color: var(--cyan);
+        }
+
+        .metric:nth-child(2) strong {
+            color: var(--green);
+        }
+
+        .metric:nth-child(3) strong {
+            color: var(--amber);
+        }
+
+        .metric:nth-child(4) strong {
+            color: var(--rose);
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 0.86rem;
+            margin-top: 1rem;
+        }
+
+        .capability-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .capability {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.35rem;
+        }
+
+        .capability h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .capability ul,
+        .case ul {
+            color: var(--muted);
+            list-style: none;
+        }
+
+        .capability li,
+        .case li {
+            border-top: 1px solid rgba(168, 176, 188, 0.14);
+            padding: 0.72rem 0;
+        }
+
+        .case-grid {
+            display: grid;
+            gap: 1.25rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .case {
+            background: linear-gradient(180deg, rgba(32, 36, 43, 0.9), rgba(17, 20, 25, 0.96));
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .case-label {
+            color: var(--cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .case h3 {
+            font-size: 1.45rem;
+            line-height: 1.22;
+            margin-bottom: 0.9rem;
+        }
+
+        .case p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .evidence-row {
+            display: grid;
+            gap: 0.75rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin: 1rem 0 1.2rem;
+        }
+
+        .evidence {
+            background: rgba(13, 15, 18, 0.76);
+            border: 1px solid rgba(168, 176, 188, 0.18);
+            border-radius: 6px;
+            padding: 0.85rem;
+        }
+
+        .evidence strong {
+            color: var(--text);
+            display: block;
+            font-size: 1.25rem;
+            line-height: 1.15;
+        }
+
+        .evidence span {
+            color: var(--muted);
+            display: block;
+            font-size: 0.82rem;
+            line-height: 1.35;
+            margin-top: 0.35rem;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1.1rem;
+        }
+
+        .paper-link {
+            border: 1px solid rgba(37, 215, 244, 0.4);
+            border-radius: 4px;
+            color: var(--cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.5rem 0.68rem;
+            text-decoration: none;
+        }
+
+        .paper-link:hover {
+            background: rgba(37, 215, 244, 0.1);
+        }
+
+        .library-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .publication {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            justify-content: space-between;
+            min-height: 270px;
+            padding: 1.2rem;
+        }
+
+        .publication h3 {
+            font-size: 1.08rem;
+            line-height: 1.28;
+        }
+
+        .publication p {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .tag {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.32rem 0.58rem;
+        }
+
+        .cta-band {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1fr auto;
+            padding: 1.5rem;
+        }
+
+        .cta-band h2 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .cta-band p {
+            color: var(--muted);
+            margin-top: 0.35rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.9rem;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .case-grid,
+            .cta-band {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-grid,
+            .capability-grid,
+            .library-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding-left: 0;
+                padding-right: 0;
+                width: calc(100vw - 2rem);
+            }
+
+            .nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.8rem 1rem;
+            }
+
+            .hero {
+                padding-top: 4.5rem;
+            }
+
+            .metric-grid,
+            .capability-grid,
+            .library-grid,
+            .evidence-row {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: clamp(2.7rem, 16vw, 4rem);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="site-clean.css?v=20260524-style2">
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a class="logo" href="index.html">&lt;KS/&gt;</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ai-integration-portfolio.html">AI Integration</a></li>
+                <li><a href="research-portfolio.html">Research</a></li>
+                <li><a href="ux-hci-portfolio.html">HCI/UX</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div>
+                        <span class="eyebrow">Research portfolio</span>
+                        <h1>Mixed-methods research for AI, safety, and emerging technology.</h1>
+                        <p class="hero-copy">I run rigorous quantitative and qualitative research across workplace AI, social VR, trust and safety, media effects, and online communities. I turn experiments, surveys, interviews, and content analysis into evidence teams can act on.</p>
+                        <div class="actions">
+                            <a class="btn btn-primary" href="Kelsea-Schulenberg-Research-Portfolio.pdf" target="_blank" rel="noopener">Download portfolio PDF</a>
+                        </div>
+                    </div>
+                    <aside class="hero-panel">
+                        <h2>Research snapshot</h2>
+                        <p>Ph.D. researcher with large-scale experiment, survey, interview, and content-analysis experience across fast-changing technologies.</p>
+                        <div class="tag-row">
+                            <span class="tag">Mixed methods</span>
+                            <span class="tag">Experimentation</span>
+                            <span class="tag">SEM</span>
+                            <span class="tag">AI evaluation</span>
+                            <span class="tag">Trust and safety</span>
+                            <span class="tag">Survey research</span>
+                            <span class="tag">Interview studies</span>
+                            <span class="tag">Content analysis</span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="numbers">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Scale of evidence</span>
+                    <h2>Evidence at a glance.</h2>
+                    <p>Large samples, sensitive topics, multiple methods, and work that spans AI, VR, media, safety, and online communities.</p>
+                </div>
+                <div class="metric-grid">
+                    <div class="metric">
+                        <strong>703</strong>
+                        <span>participants recruited for my dissertation experiment; 685 valid responses analyzed.</span>
+                    </div>
+                    <div class="metric">
+                        <strong>685</strong>
+                        <span>valid respondents in a 2 x 4 x 2 online factorial experiment on workplace AI.</span>
+                    </div>
+                    <div class="metric">
+                        <strong>1,540</strong>
+                        <span>forum posts and comments analyzed for generative AI and game development research.</span>
+                    </div>
+                    <div class="metric">
+                        <strong>280+</strong>
+                        <span>interview and focus group participant records across AI, VR, games, streaming, and media.</span>
+                    </div>
+                    <div class="metric">
+                        <strong>223</strong>
+                        <span>global survey respondents across six continents/regions for social VR safety research.</span>
+                    </div>
+                </div>
+                <p class="note">Counts are study-level evidence from the linked work, not a de-duplicated count of unique people.</p>
+            </div>
+        </section>
+
+        <section id="capabilities">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Research capabilities</span>
+                    <h2>Methods I can own end to end.</h2>
+                    <p>I can scope ambiguous questions, choose the right method, run the study, analyze the data, and translate findings for product, policy, and strategy teams.</p>
+                </div>
+                <div class="capability-grid">
+                    <article class="capability">
+                        <h3>Quantitative research</h3>
+                        <ul>
+                            <li>Factorial experiments, recruitment, attention checks, and valid-sample reporting.</li>
+                            <li>Survey design for emerging tech, safety, user experience, and workplace questions.</li>
+                            <li>Descriptives, cross-group comparison, structural equation modeling, and synthesis.</li>
+                            <li>Structured content coding, intercoder reliability, and media analysis.</li>
+                        </ul>
+                    </article>
+                    <article class="capability">
+                        <h3>Qualitative research</h3>
+                        <ul>
+                            <li>Interviews, focus groups, expert reviews, and stakeholder conversations.</li>
+                            <li>Thematic analysis, grounded theory, reflexive coding, and cross-case comparison.</li>
+                            <li>Sensitive-topic research on harassment, platform risk, workforce dynamics, safety, and labor.</li>
+                        </ul>
+                    </article>
+                    <article class="capability">
+                        <h3>Translation to action</h3>
+                        <ul>
+                            <li>Recommendations for AI moderation, consent UX, dashboards, and workplace AI.</li>
+                            <li>Frameworks for accountability, job security, evaluation, and risk.</li>
+                            <li>Briefings, papers, design principles, and decision models for cross-functional teams.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="casework">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Applied research case studies</span>
+                    <h2>Methods tied to organizational decisions.</h2>
+                    <p>Selected examples framed around product, policy, safety, and workforce decisions.</p>
+                </div>
+                <div class="case-grid">
+                    <article class="case">
+                        <div class="case-label">AI work, evaluation, and governance</div>
+                        <h3>Workplace AI evaluation and governance</h3>
+                        <p>Tested how AI design, worker presentation, partner type, and task type shape evaluation, credit, accountability, and job-security perceptions.</p>
+                        <div class="evidence-row">
+                            <div class="evidence"><strong>685</strong><span>valid experiment respondents.</span></div>
+                            <div class="evidence"><strong>16</strong><span>between-subjects conditions.</span></div>
+                            <div class="evidence"><strong>6</strong><span>expert interviews.</span></div>
+                        </div>
+                        <ul>
+                            <li>Methods: factorial experiment, SEM, interviews, survey measures.</li>
+                            <li>Use cases: AI governance, HR tech, workforce transformation, internal tool adoption.</li>
+                        </ul>
+                        <div class="links">
+                            <a class="paper-link" href="papers/AI%20In%20Consideration%20of%20Her_%20Accounting%20for%20Gendered%20Workplace%20Dyn.pdf" target="_blank" rel="noopener">Dissertation PDF</a>
+                            <a class="paper-link" href="papers/3632121.pdf" target="_blank" rel="noopener">AI accountability paper</a>
+                            <a class="paper-link" href="papers/HICSS23.pdf" target="_blank" rel="noopener">AI practitioner paper</a>
+                            <a class="paper-link" href="Evalaution.pdf" target="_blank" rel="noopener">Evaluation chapter</a>
+                            <a class="paper-link" href="Job.pdf" target="_blank" rel="noopener">Job security chapter</a>
+                        </div>
+                    </article>
+
+                    <article class="case">
+                        <div class="case-label">Trust, safety, and social VR</div>
+                        <h3>Trust, safety, and social VR</h3>
+                        <p>Studied harassment, consent, user visibility, AI moderation, and AI-enabled safety support in immersive online spaces.</p>
+                        <div class="evidence-row">
+                            <div class="evidence"><strong>223</strong><span>global survey respondents.</span></div>
+                            <div class="evidence"><strong>39</strong><span>moderation and consent interviews.</span></div>
+                            <div class="evidence"><strong>31</strong><span>users from marginalized populations interviewed on harassment.</span></div>
+                        </div>
+                        <ul>
+                            <li>Methods: surveys, interviews, thematic analysis, safety-design synthesis.</li>
+                            <li>Use cases: platform safety, gaming, online communities, AI-assisted moderation.</li>
+                        </ul>
+                        <div class="links">
+                            <a class="paper-link" href="papers/3544548.3581090.pdf" target="_blank" rel="noopener">AI moderation</a>
+                            <a class="paper-link" href="papers/3610172.pdf" target="_blank" rel="noopener">Consent in VR</a>
+                            <a class="paper-link" href="papers/3686923.pdf" target="_blank" rel="noopener">User visibility survey</a>
+                            <a class="paper-link" href="papers/3610027.pdf" target="_blank" rel="noopener">Marginalized users and harassment</a>
+                        </div>
+                    </article>
+
+                    <article class="case">
+                        <div class="case-label">Emerging tech communities</div>
+                        <h3>Emerging tech adoption and communities</h3>
+                        <p>Mapped how people use new tools for collaboration, social support, streaming, creator work, and game development.</p>
+                        <div class="evidence-row">
+                            <div class="evidence"><strong>30</strong><span>VR collaboration interviews.</span></div>
+                            <div class="evidence"><strong>29</strong><span>marginalized population support interviews.</span></div>
+                            <div class="evidence"><strong>1,540</strong><span>GenAI forum posts/comments.</span></div>
+                        </div>
+                        <ul>
+                            <li>Methods: interviews, online community analysis, cross-case synthesis.</li>
+                            <li>Use cases: creator tools, community products, AI workflows, distributed collaboration.</li>
+                        </ul>
+                        <div class="links">
+                            <a class="paper-link" href="papers/3492836.pdf" target="_blank" rel="noopener">VR collaboration</a>
+                            <a class="paper-link" href="papers/3544548.3581530.pdf" target="_blank" rel="noopener">Support in VR communities</a>
+                            <a class="paper-link" href="papers/3613905.3650845.pdf" target="_blank" rel="noopener">GenAI and game dev</a>
+                            <a class="paper-link" href="papers/3613905.3651036.pdf" target="_blank" rel="noopener">VR streamers</a>
+                        </div>
+                    </article>
+
+                    <article class="case">
+                        <div class="case-label">Media effects and public discourse</div>
+                        <h3>Media effects and audience insight</h3>
+                        <p>Analyzed how news, podcasts, and online communities shape risk, responsibility, belonging, and support.</p>
+                        <div class="evidence-row">
+                            <div class="evidence"><strong>181</strong><span>coded news articles.</span></div>
+                            <div class="evidence"><strong>18</strong><span>focus group participants.</span></div>
+                            <div class="evidence"><strong>4</strong><span>independent coders.</span></div>
+                        </div>
+                        <ul>
+                            <li>Methods: quantitative content analysis, focus groups, survey intake.</li>
+                            <li>Use cases: communications research, content strategy, public trust, audience insight.</li>
+                        </ul>
+                        <div class="links">
+                            <a class="paper-link" href="papers/10.1177_07395329231167368.pdf" target="_blank" rel="noopener">COVID-19 framing</a>
+                            <a class="paper-link" href="papers/_Youre%20In%20a%20Cult%20Call%20Your%20Dad._%20An%20Investigation%20into%20the%20True.pdf" target="_blank" rel="noopener">Podcast communities thesis</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Linked research library</span>
+                    <h2>Selected research evidence.</h2>
+                    <p>Representative papers and PDFs grouped around method, scale, and applied research value.</p>
+                </div>
+                <div class="library-grid">
+                    <article class="publication">
+                        <div>
+                            <h3>Workplace dynamics in human-centered AI integration</h3>
+                            <p>703 recruited, 685 valid responses, 2 x 4 x 2 experiment, SEM, and expert interviews.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Factorial experiment</span><span class="tag">SEM</span><span class="tag">Workplace AI</span></div>
+                        <a class="paper-link" href="papers/AI%20In%20Consideration%20of%20Her_%20Accounting%20for%20Gendered%20Workplace%20Dyn.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>AI professionals' accountability for AI bias mitigation</h3>
+                            <p>20 AI professionals across roles, organizations, and industries.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">AI governance</span><span class="tag">Interviews</span></div>
+                        <a class="paper-link" href="papers/3632121.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Practitioner perspectives on AI design and development</h3>
+                            <p>Eight AI practitioners interviewed on design decisions and workplace dynamics.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">AI design</span><span class="tag">Workplace research</span></div>
+                        <a class="paper-link" href="papers/HICSS23.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>AI-based moderation for harassment in social VR</h3>
+                            <p>39 interviews on AI moderation expectations in immersive spaces.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">AI moderation</span><span class="tag">Social VR</span></div>
+                        <a class="paper-link" href="papers/3544548.3581090.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>AI-enabled safety support in social VR</h3>
+                            <p>20 interviews on AI-supported safety features in social VR.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">AI systems</span><span class="tag">Safety design</span></div>
+                        <a class="paper-link" href="papers/3706598.3713473.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Generative AI in nonprofit indie game development</h3>
+                            <p>1,540 posts/comments analyzed from online creative communities.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">GenAI</span><span class="tag">Content analysis</span></div>
+                        <a class="paper-link" href="papers/3613905.3650845.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>User visibility and harassment in social VR</h3>
+                            <p>223 social VR users across six continents/regions.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Survey</span><span class="tag">Trust and safety</span></div>
+                        <a class="paper-link" href="papers/3686923.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Preventing interpersonal harm in social VR through consent</h3>
+                            <p>39 user interviews translated into consent-oriented design implications.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Consent UX</span><span class="tag">Interviews</span></div>
+                        <a class="paper-link" href="papers/3610172.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Marginalized users managing harassment risks in social VR</h3>
+                            <p>31 social VR users from marginalized populations interviewed on risk, visibility, and mitigation.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Safety</span><span class="tag">Qualitative</span></div>
+                        <a class="paper-link" href="papers/3610027.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>People who experienced both sides of harassment accusations</h3>
+                            <p>12-participant study on ambiguity, accountability, and safety edge cases.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Platform policy</span><span class="tag">Interviews</span></div>
+                        <a class="paper-link" href="papers/3711005.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Everyday collaboration in social VR</h3>
+                            <p>30 interviews on embodiment, co-presence, and collaboration.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Collaboration</span><span class="tag">Social VR</span></div>
+                        <a class="paper-link" href="papers/3492836.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Social support for marginalized populations in social VR</h3>
+                            <p>29 interviews across countries and cultures on belonging and social support.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Community</span><span class="tag">Social support</span></div>
+                        <a class="paper-link" href="papers/3544548.3581530.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Social VR streamers' audience engagement strategies</h3>
+                            <p>Eight streamer interviews on embodied performance and audience connection.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Creator research</span><span class="tag">Interviews</span></div>
+                        <a class="paper-link" href="papers/3613905.3651036.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Nonprofit indie game development challenges</h3>
+                            <p>28 indie game developer interviews across nonprofit creative contexts.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Game studies</span><span class="tag">Interviews</span></div>
+                        <a class="paper-link" href="papers/3544548.3580976.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>TitleIX: mobile augmented reality bystander intervention training</h3>
+                            <p>AR training prototype for campus bystander intervention.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">AR</span><span class="tag">Training</span></div>
+                        <a class="paper-link" href="papers/3544549.3583832%20(1).pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>Newspaper framing of COVID-19 public health disparities</h3>
+                            <p>181 articles coded with a four-coder reliability workflow.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Media effects</span><span class="tag">Content coding</span></div>
+                        <a class="paper-link" href="papers/10.1177_07395329231167368.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                    <article class="publication">
+                        <div>
+                            <h3>True crime podcast fan communities</h3>
+                            <p>Introductory survey and focus groups with 18 participants.</p>
+                        </div>
+                        <div class="tag-row"><span class="tag">Focus groups</span><span class="tag">Media communities</span></div>
+                        <a class="paper-link" href="papers/_Youre%20In%20a%20Cult%20Call%20Your%20Dad._%20An%20Investigation%20into%20the%20True.pdf" target="_blank" rel="noopener">Open PDF</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Research depth with practical translation.</h2>
+                        <p>Quantitative scale, qualitative depth, and clear translation for teams making product, policy, AI, and safety decisions.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="mailto:kelseas@g.clemson.edu">Contact me</a>
+                        <a class="btn btn-secondary" href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Dr. Kelsea Schulenberg. Research portfolio for applied technology roles.</p>
+        </div>
+    </footer>
+</body>
+</html>

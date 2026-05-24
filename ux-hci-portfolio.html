@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX & HCI Portfolio | Dr. Kelsea Schulenberg</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #101214;
+            --surface: #181c20;
+            --surface-2: #22272e;
+            --ink: #f8fafc;
+            --muted: #aab3bf;
+            --line: #313943;
+            --teal: #30d5c8;
+            --gold: #f3c969;
+            --coral: #ff7a68;
+            --green: #7bd88f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                linear-gradient(180deg, rgba(48, 213, 200, 0.08), transparent 440px),
+                linear-gradient(90deg, rgba(243, 201, 105, 0.06), transparent 60%),
+                var(--bg);
+            color: var(--ink);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(248, 250, 252, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(248, 250, 252, 0.035) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, black, transparent 78%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(16, 18, 20, 0.88);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-inner {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1240px;
+            padding: 1rem 1.5rem;
+            width: 100%;
+        }
+
+        .logo {
+            color: var(--teal);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.4rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1240px;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .hero {
+            padding: 7rem 0 4rem;
+        }
+
+        .hero-grid {
+            align-items: end;
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: minmax(0, 1fr) 390px;
+        }
+
+        .eyebrow {
+            color: var(--teal);
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(3.1rem, 7vw, 6.2rem);
+            letter-spacing: 0;
+            line-height: 0.98;
+            max-width: 930px;
+        }
+
+        .hero-copy {
+            color: var(--muted);
+            font-size: clamp(1.08rem, 2vw, 1.32rem);
+            margin-top: 1.4rem;
+            max-width: 790px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            align-items: center;
+            border-radius: 4px;
+            display: inline-flex;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.84rem;
+            font-weight: 700;
+            min-height: 44px;
+            padding: 0.76rem 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: #071113;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        .btn:hover {
+            border-color: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        .snapshot {
+            background: rgba(24, 28, 32, 0.92);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .snapshot h2 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .snapshot p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.48rem;
+        }
+
+        .tag {
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.32rem 0.58rem;
+        }
+
+        section {
+            padding: 4.4rem 0;
+        }
+
+        .section-heading {
+            margin-bottom: 2rem;
+            max-width: 850px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 4vw, 3.35rem);
+            line-height: 1.08;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .proof-grid,
+        .method-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .proof-grid {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+
+        .method-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .proof,
+        .method,
+        .project,
+        .artifact {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        .proof {
+            min-height: 150px;
+            padding: 1.2rem;
+        }
+
+        .proof strong {
+            color: var(--gold);
+            display: block;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1;
+            margin-bottom: 0.7rem;
+        }
+
+        .proof span,
+        .method li,
+        .project p,
+        .artifact p {
+            color: var(--muted);
+        }
+
+        .method {
+            padding: 1.3rem;
+        }
+
+        .method h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .method ul,
+        .project ul {
+            list-style: none;
+        }
+
+        .method li,
+        .project li {
+            border-top: 1px solid rgba(170, 179, 191, 0.14);
+            padding: 0.65rem 0;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 1.25rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .project {
+            display: grid;
+            grid-template-rows: 210px auto;
+            overflow: hidden;
+        }
+
+        .project-media {
+            align-items: center;
+            background: #101418;
+            display: flex;
+            justify-content: center;
+            min-height: 210px;
+            overflow: hidden;
+        }
+
+        .project-media img {
+            height: 100%;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        .project-media.visual {
+            background:
+                linear-gradient(135deg, rgba(48, 213, 200, 0.18), transparent 52%),
+                linear-gradient(45deg, rgba(243, 201, 105, 0.16), transparent 55%),
+                #14191f;
+            padding: 1rem;
+        }
+
+        .visual-frame {
+            border: 1px solid rgba(248, 250, 252, 0.2);
+            border-radius: 8px;
+            display: grid;
+            gap: 0.55rem;
+            max-width: 88%;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .visual-bar,
+        .visual-row {
+            border-radius: 4px;
+            height: 12px;
+        }
+
+        .visual-bar {
+            background: var(--teal);
+            width: 68%;
+        }
+
+        .visual-row {
+            background: rgba(248, 250, 252, 0.18);
+        }
+
+        .visual-row:nth-child(3) {
+            width: 76%;
+        }
+
+        .visual-row:nth-child(4) {
+            width: 88%;
+        }
+
+        .project-body {
+            padding: 1.35rem;
+        }
+
+        .project-label {
+            color: var(--teal);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .project h3 {
+            font-size: 1.45rem;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .project p {
+            margin-bottom: 1rem;
+        }
+
+        .project ul {
+            margin-top: 1rem;
+        }
+
+        .artifact-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .artifact {
+            padding: 1.1rem;
+        }
+
+        .artifact h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .cta-band {
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1fr auto;
+            padding: 1.5rem;
+        }
+
+        .cta-band h2 {
+            font-size: 1.7rem;
+            line-height: 1.2;
+        }
+
+        .cta-band p {
+            color: var(--muted);
+            margin-top: 0.35rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.9rem;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .project-grid,
+            .cta-band {
+                grid-template-columns: 1fr;
+            }
+
+            .method-grid,
+            .artifact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding-left: 0;
+                padding-right: 0;
+                width: calc(100vw - 2rem);
+            }
+
+            .nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.8rem;
+                width: calc(100vw - 2rem);
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.75rem 1rem;
+            }
+
+            .hero {
+                padding-top: 4.5rem;
+            }
+
+            h1 {
+                font-size: clamp(2.55rem, 15vw, 4rem);
+            }
+
+            .method-grid,
+            .artifact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="site-clean.css?v=20260524-style2">
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a class="logo" href="index.html">&lt;KS/&gt;</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ai-integration-portfolio.html">AI Integration</a></li>
+                <li><a href="research-portfolio.html">Research</a></li>
+                <li><a href="ux-hci-portfolio.html">HCI/UX</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div>
+                        <span class="eyebrow">UX & HCI portfolio</span>
+                        <h1>Human-centered design for complex, high-stakes technology.</h1>
+                        <p class="hero-copy">I design, evaluate, and communicate user experiences for dashboards, mobile training, immersive environments, community tools, and safety workflows. My work connects research depth with practical interaction design.</p>
+                        <div class="actions">
+                            <a class="btn btn-primary" href="Kelsea-Schulenberg-UX-HCI-Portfolio.pdf" target="_blank" rel="noopener">Download portfolio PDF</a>
+                        </div>
+                    </div>
+                    <aside class="snapshot">
+                        <h2>Design snapshot</h2>
+                        <p>UX/HCI designer-researcher with experience turning ambiguous needs into prototypes, interaction flows, decision-support interfaces, and safety-centered product recommendations.</p>
+                        <div class="tag-row">
+                            <span class="tag">UX research</span>
+                            <span class="tag">Interaction design</span>
+                            <span class="tag">Prototyping</span>
+                            <span class="tag">Dashboard UX</span>
+                            <span class="tag">AR/VR</span>
+                            <span class="tag">Trust & safety</span>
+                            <span class="tag">Mobile UX</span>
+                            <span class="tag">Stakeholder research</span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Portfolio at a glance</span>
+                    <h2>Design range across platforms and problem spaces.</h2>
+                    <p>The common thread is translating human needs into clearer interfaces, safer interactions, and more usable systems.</p>
+                </div>
+                <div class="proof-grid">
+                    <div class="proof"><strong>6</strong><span>UX/HCI projects spanning dashboards, AR, VR, mobile, community platforms, and creator tools.</span></div>
+                    <div class="proof"><strong>4</strong><span>interactive contexts: decision support, safety training, immersive spaces, and social/community systems.</span></div>
+                    <div class="proof"><strong>3</strong><span>prototype-heavy formats: mobile app, augmented reality experience, and virtual environment interaction flows.</span></div>
+                    <div class="proof"><strong>1</strong><span>CHI-recognized transformative application for campus safety training.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methods">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Design methods</span>
+                    <h2>End-to-end HCI and UX practice.</h2>
+                    <p>I can move from discovery to prototype to evaluation, while keeping stakeholder constraints and user needs visible.</p>
+                </div>
+                <div class="method-grid">
+                    <article class="method">
+                        <h3>Discovery</h3>
+                        <ul>
+                            <li>User interviews and stakeholder conversations</li>
+                            <li>Contextual problem framing</li>
+                            <li>Workflow and task analysis</li>
+                            <li>Safety, trust, and accessibility considerations</li>
+                        </ul>
+                    </article>
+                    <article class="method">
+                        <h3>Design</h3>
+                        <ul>
+                            <li>Interaction flows and feature concepts</li>
+                            <li>Mobile-first product structure</li>
+                            <li>Dashboard information architecture</li>
+                            <li>AR/VR scenario and environment design</li>
+                        </ul>
+                    </article>
+                    <article class="method">
+                        <h3>Evaluation</h3>
+                        <ul>
+                            <li>Usability testing and design critique</li>
+                            <li>Prototype feedback synthesis</li>
+                            <li>Cognitive load and decision-support review</li>
+                            <li>Design recommendations for product teams</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Selected UX/HCI projects</span>
+                    <h2>Design work with clear users, constraints, and artifacts.</h2>
+                    <p>These examples focus on design decisions, research inputs, and user experience outcomes.</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project">
+                        <div class="project-media visual">
+                            <div class="visual-frame">
+                                <div class="visual-bar"></div>
+                                <div class="visual-row"></div>
+                                <div class="visual-row"></div>
+                                <div class="visual-row"></div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-label">Dashboard UX | Decision support</div>
+                            <h3>Navy Squadron Readiness Dashboards</h3>
+                            <p>Redesigned readiness dashboard concepts for high-stakes assessment contexts where officers needed clearer status signals, responsibility boundaries, and reduced cognitive load.</p>
+                            <div class="tag-row">
+                                <span class="tag">Dashboard UX</span>
+                                <span class="tag">Stakeholder research</span>
+                                <span class="tag">Cognitive load</span>
+                                <span class="tag">Decision support</span>
+                            </div>
+                            <ul>
+                                <li>Design focus: information hierarchy, trust calibration, review workflows.</li>
+                                <li>Outcome: published design insights on shared responsibility in high-stakes decision making.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-media visual">
+                            <div class="visual-frame">
+                                <div class="visual-bar"></div>
+                                <div class="visual-row"></div>
+                                <div class="visual-row"></div>
+                                <div class="visual-row"></div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-label">Trust & safety | Virtual spaces</div>
+                            <h3>Moderator Workflows for Virtual Communities</h3>
+                            <p>Designed moderation concepts for immersive community spaces, focusing on transparency, escalation, user safety, and preserving the flow of social interaction.</p>
+                            <div class="tag-row">
+                                <span class="tag">Trust & safety</span>
+                                <span class="tag">Service design</span>
+                                <span class="tag">VR UX</span>
+                                <span class="tag">Policy-to-product</span>
+                            </div>
+                            <ul>
+                                <li>Design focus: escalation paths, feedback loops, user-facing transparency.</li>
+                                <li>Outcome: informed moderation best practices for emerging platform contexts.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-media">
+                            <img src="training.png" alt="Interactive campus safety training prototype">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-label">AR | Mobile training</div>
+                            <h3>Interactive Bystander Awareness Training</h3>
+                            <p>Designed a mobile, geolocation-enabled AR training experience that placed users in interactive scenarios and helped them practice intervention strategies.</p>
+                            <div class="tag-row">
+                                <span class="tag">AR design</span>
+                                <span class="tag">Mobile UX</span>
+                                <span class="tag">Scenario design</span>
+                                <span class="tag">Training UX</span>
+                            </div>
+                            <ul>
+                                <li>Design focus: situated learning, scenario flow, consequence feedback.</li>
+                                <li>Outcome: recognized at CHI 2023 for outstanding transformative application.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-media visual">
+                            <div class="visual-frame">
+                                <div class="visual-bar"></div>
+                                <div class="visual-row"></div>
+                                <div class="visual-row"></div>
+                                <div class="visual-row"></div>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-label">Immersive UX | Safety mechanics</div>
+                            <h3>VR Boundary and Consent Mechanics</h3>
+                            <p>Designed and evaluated VR-native interaction prompts for preventing interpersonal harm while keeping immersive experiences clear, embodied, and usable.</p>
+                            <div class="tag-row">
+                                <span class="tag">VR UX</span>
+                                <span class="tag">Interaction design</span>
+                                <span class="tag">Safety mechanics</span>
+                                <span class="tag">Embodied interaction</span>
+                            </div>
+                            <ul>
+                                <li>Design focus: timing, user control, boundary setting, continuity of experience.</li>
+                                <li>Outcome: published design guidance for consent-oriented immersive spaces.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-media">
+                            <img src="blockchain.png" alt="VR copyright system prototype">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-label">VR | Creator tools</div>
+                            <h3>VR Copyright and Creator Attribution System</h3>
+                            <p>Designed a VR concept for artists to register, display, and protect digital creations in immersive environments using verifiable ownership cues.</p>
+                            <div class="tag-row">
+                                <span class="tag">Creator UX</span>
+                                <span class="tag">VR design</span>
+                                <span class="tag">Speculative design</span>
+                                <span class="tag">Digital rights</span>
+                            </div>
+                            <ul>
+                                <li>Design focus: artist workflows, verification cues, display and discovery.</li>
+                                <li>Outcome: user-tested with artists to identify trust and value signals.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-media">
+                            <img src="women.png" alt="Community platform prototype">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-label">Mobile UX | Community platform</div>
+                            <h3>Mentorship and Community Platform for Computing Students</h3>
+                            <p>Designed a mobile-first platform to help computing students find mentors, events, opportunities, and peer support.</p>
+                            <div class="tag-row">
+                                <span class="tag">Mobile UX</span>
+                                <span class="tag">Community research</span>
+                                <span class="tag">Mentorship</span>
+                                <span class="tag">Information architecture</span>
+                            </div>
+                            <ul>
+                                <li>Design focus: onboarding, event discovery, mentor matching, community trust.</li>
+                                <li>Outcome: early user feedback shaped broader community-support design recommendations.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="artifacts">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Artifacts I produce</span>
+                    <h2>Clear design outputs for cross-functional teams.</h2>
+                </div>
+                <div class="artifact-grid">
+                    <article class="artifact">
+                        <h3>Experience flows</h3>
+                        <p>Scenario paths, intervention points, moderation flows, and user journeys.</p>
+                    </article>
+                    <article class="artifact">
+                        <h3>Prototype concepts</h3>
+                        <p>Mobile, dashboard, AR, and VR concepts ready for stakeholder feedback.</p>
+                    </article>
+                    <article class="artifact">
+                        <h3>Research synthesis</h3>
+                        <p>Findings translated into design principles, product requirements, and risk notes.</p>
+                    </article>
+                    <article class="artifact">
+                        <h3>Decision guidance</h3>
+                        <p>Recommendations that connect user needs to implementation and policy constraints.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="cta-band">
+                    <div>
+                        <h2>Design work grounded in real user behavior.</h2>
+                        <p>I bring HCI research depth, UX design judgment, and experience with complex technology contexts.</p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="mailto:kelseas@g.clemson.edu">Contact me</a>
+                        <a class="btn btn-secondary" href="research-portfolio.html">Research portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Dr. Kelsea Schulenberg. UX & HCI portfolio for design and research roles.</p>
+        </div>
+    </footer>
+</body>
+</html>

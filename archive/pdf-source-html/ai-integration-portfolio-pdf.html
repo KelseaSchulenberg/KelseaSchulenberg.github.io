@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Integration Portfolio PDF | Dr. Kelsea Schulenberg</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: Letter;
+            margin: 0.55in;
+        }
+
+        :root {
+            --ink: #111827;
+            --muted: #4b5563;
+            --line: #d7dde7;
+            --panel: #f4f8fb;
+            --blue: #0f6f8d;
+            --green: #176b4d;
+            --gold: #9a6a12;
+        }
+
+        body {
+            color: var(--ink);
+            font-family: "Arial", "Helvetica", sans-serif;
+            font-size: 10.2pt;
+            line-height: 1.42;
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 31pt;
+            letter-spacing: -0.02em;
+            line-height: 1.02;
+            margin-top: 0.08in;
+            max-width: 7.3in;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--line);
+            font-size: 14pt;
+            letter-spacing: 0.02em;
+            margin: 0.24in 0 0.12in;
+            padding-bottom: 0.05in;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 11pt;
+            line-height: 1.2;
+            margin-bottom: 0.04in;
+        }
+
+        .contact {
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+            display: flex;
+            font-size: 9.5pt;
+            gap: 0.18in;
+            justify-content: space-between;
+            padding-bottom: 0.12in;
+        }
+
+        .contact strong {
+            color: var(--ink);
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            color: var(--muted);
+            font-size: 12.3pt;
+            line-height: 1.35;
+            margin-top: 0.12in;
+            max-width: 7.3in;
+        }
+
+        .metrics {
+            display: grid;
+            gap: 0.09in;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 0.22in;
+        }
+
+        .metric {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            min-height: 0.82in;
+            padding: 0.1in;
+        }
+
+        .metric strong {
+            color: var(--green);
+            display: block;
+            font-size: 22pt;
+            line-height: 1;
+            margin-bottom: 0.04in;
+        }
+
+        .metric span {
+            color: var(--muted);
+            display: block;
+            font-size: 8.5pt;
+            line-height: 1.24;
+        }
+
+        .three-col,
+        .two-col {
+            display: grid;
+            gap: 0.12in;
+        }
+
+        .three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .box,
+        .case,
+        .artifact {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            break-inside: avoid;
+            padding: 0.12in;
+        }
+
+        .box.blue,
+        .case.blue {
+            border-top: 4px solid var(--blue);
+        }
+
+        .box.green,
+        .case.green {
+            border-top: 4px solid var(--green);
+        }
+
+        .box.gold,
+        .case.gold {
+            border-top: 4px solid var(--gold);
+        }
+
+        ul {
+            margin: 0.06in 0 0;
+            padding-left: 0.16in;
+        }
+
+        li {
+            margin: 0.025in 0;
+        }
+
+        .muted,
+        .case p,
+        .artifact p {
+            color: var(--muted);
+        }
+
+        .label {
+            color: var(--blue);
+            font-size: 8.2pt;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .case {
+            margin-bottom: 0.12in;
+        }
+
+        .case p {
+            margin: 0.035in 0 0.055in;
+        }
+
+        .artifact-grid {
+            display: grid;
+            gap: 0.09in;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .artifact {
+            background: var(--panel);
+            padding: 0.09in;
+        }
+
+        .artifact p {
+            font-size: 8.8pt;
+            line-height: 1.28;
+        }
+
+        .footer {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 8.2pt;
+            margin-top: 0.18in;
+            padding-top: 0.08in;
+        }
+
+        .page-break {
+            break-before: page;
+        }
+    </style>
+</head>
+<body>
+    <header class="contact">
+        <div><strong>Dr. Kelsea Schulenberg</strong> | Ph.D., Human-Centered Computing</div>
+        <div>kelseas@g.clemson.edu | kelseaschulenberg.github.io | LinkedIn: kelsea-schulenberg-6bb009a9</div>
+    </header>
+
+    <main>
+        <section>
+            <div class="eyebrow">AI integration portfolio</div>
+            <h1>Research-driven AI integration that augments human labor.</h1>
+            <p class="subhead">I study how AI systems enter real work: how they change evaluation, accountability, job security, decision-making, safety workflows, and creative production. My focus is practical integration that improves human work rather than obscuring or replacing it.</p>
+
+            <div class="metrics">
+                <div class="metric"><strong>703</strong><span>participants recruited for a dissertation experiment on workplace AI integration.</span></div>
+                <div class="metric"><strong>685</strong><span>valid responses analyzed across 16 AI-enabled workplace conditions.</span></div>
+                <div class="metric"><strong>20</strong><span>AI professionals interviewed about accountability for bias mitigation.</span></div>
+                <div class="metric"><strong>1,540</strong><span>GenAI forum posts/comments analyzed to understand creative workflow adoption.</span></div>
+                <div class="metric"><strong>39</strong><span>interviews on AI-based moderation expectations in immersive communities.</span></div>
+                <div class="metric"><strong>2</strong><span>HCI design contexts for AI-augmented decision support and moderation workflows.</span></div>
+            </div>
+
+            <h2>Integration Framework</h2>
+            <div class="three-col">
+                <div class="box blue">
+                    <h3>Human role clarity</h3>
+                    <ul>
+                        <li>What work remains human-owned?</li>
+                        <li>Where does AI assist, recommend, or act?</li>
+                        <li>How do teams assign credit and responsibility?</li>
+                    </ul>
+                </div>
+                <div class="box green">
+                    <h3>Evaluation and risk</h3>
+                    <ul>
+                        <li>How does AI change performance evaluation?</li>
+                        <li>Does the system create job security concerns?</li>
+                        <li>What assumptions shape trust or overreliance?</li>
+                    </ul>
+                </div>
+                <div class="box gold">
+                    <h3>Adoption and design</h3>
+                    <ul>
+                        <li>Where do workflows need transparency?</li>
+                        <li>Which handoffs need guardrails?</li>
+                        <li>What interface cues help people use AI well?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-break">
+            <h2>Selected AI Integration Casework</h2>
+            <div class="two-col">
+                <article class="case blue">
+                    <div class="label">Workplace AI | Labor augmentation</div>
+                    <h3>AI-enabled workplace evaluation and job security</h3>
+                    <p>Tested how AI design, worker presentation, dyadic partner type, and task type shape evaluations of human workers.</p>
+                    <ul>
+                        <li><strong>Evidence:</strong> 703 recruited, 685 valid responses, 16 conditions, SEM, expert interviews.</li>
+                        <li><strong>Outcome:</strong> frameworks for evaluation risk, credit attribution, and job-security concerns during AI rollout.</li>
+                    </ul>
+                </article>
+
+                <article class="case green">
+                    <div class="label">AI governance | Professional practice</div>
+                    <h3>Accountability for AI bias mitigation</h3>
+                    <p>Interviewed AI professionals to understand why technical ability alone does not produce accountable AI practice.</p>
+                    <ul>
+                        <li><strong>Evidence:</strong> 20 AI professionals across development roles and industries.</li>
+                        <li><strong>Outcome:</strong> organizational and workflow factors that shape whether AI teams can own and mitigate risk.</li>
+                    </ul>
+                </article>
+
+                <article class="case gold">
+                    <div class="label">Decision support | Dashboard UX</div>
+                    <h3>AI-augmented readiness dashboards</h3>
+                    <p>Worked on dashboard concepts for high-stakes readiness assessment, focusing on cognitive load, shared responsibility, and human oversight.</p>
+                    <ul>
+                        <li><strong>Evidence:</strong> stakeholder-driven HCI design work and published decision-making insights.</li>
+                        <li><strong>Outcome:</strong> design guidance for AI-supported dashboards where speed, accuracy, and accountability matter.</li>
+                    </ul>
+                </article>
+
+                <article class="case blue">
+                    <div class="label">Platform safety | AI moderation</div>
+                    <h3>AI moderation and companion support in virtual communities</h3>
+                    <p>Studied how users expect AI moderation and AI companions to support safety without disrupting social interaction.</p>
+                    <ul>
+                        <li><strong>Evidence:</strong> 39 interviews on AI moderation and 20 interviews on AI companion support.</li>
+                        <li><strong>Outcome:</strong> guidance for transparency, escalation, user control, and human review.</li>
+                    </ul>
+                </article>
+
+                <article class="case green">
+                    <div class="label">Generative AI | Creative labor</div>
+                    <h3>GenAI in nonprofit indie game development</h3>
+                    <p>Analyzed how creative communities perceive generative AI as a production tool, including where it supports work and where it conflicts with values.</p>
+                    <ul>
+                        <li><strong>Evidence:</strong> 1,540 online posts/comments from creative community forums.</li>
+                        <li><strong>Outcome:</strong> adoption insights for integrating GenAI without flattening craft, ownership, or community norms.</li>
+                    </ul>
+                </article>
+
+                <article class="case gold">
+                    <div class="label">AI practitioner research | Design practice</div>
+                    <h3>AI design decisions and workplace dynamics</h3>
+                    <p>Interviewed AI practitioners to understand how workplace dynamics shape design decisions and responsible design practices.</p>
+                    <ul>
+                        <li><strong>Evidence:</strong> eight AI practitioners interviewed about design and development practices.</li>
+                        <li><strong>Outcome:</strong> design implications for AI teams building systems that affect workers and organizational evaluation.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="page-break">
+            <h2>What This Work Gives an Organization</h2>
+            <div class="artifact-grid">
+                <article class="artifact">
+                    <h3>Integration risk models</h3>
+                    <p>Ways to anticipate how AI affects evaluation, credit, accountability, and worker confidence.</p>
+                </article>
+                <article class="artifact">
+                    <h3>Research-backed design guidance</h3>
+                    <p>Recommendations for AI dashboards, moderation flows, companion support, and decision aids.</p>
+                </article>
+                <article class="artifact">
+                    <h3>Adoption insights</h3>
+                    <p>Evidence on how professionals, creators, and workers perceive AI value, risk, and fit.</p>
+                </article>
+                <article class="artifact">
+                    <h3>Cross-functional language</h3>
+                    <p>Frameworks that help product, research, policy, and engineering teams reason together.</p>
+                </article>
+            </div>
+
+            <h2>Best-Fit Roles</h2>
+            <div class="two-col">
+                <div class="box blue">
+                    <h3>AI integration and research</h3>
+                    <ul>
+                        <li>Human-AI interaction researcher</li>
+                        <li>Responsible AI or AI governance researcher</li>
+                        <li>AI product / UX researcher</li>
+                    </ul>
+                </div>
+                <div class="box green">
+                    <h3>Human labor and adoption</h3>
+                    <ul>
+                        <li>Workforce AI transformation research</li>
+                        <li>AI trust, safety, and moderation research</li>
+                        <li>Applied research for AI-enabled tools</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="footer">Full web portfolio: kelseaschulenberg.github.io/ai-integration-portfolio.html</p>
+        </section>
+    </main>
+</body>
+</html>

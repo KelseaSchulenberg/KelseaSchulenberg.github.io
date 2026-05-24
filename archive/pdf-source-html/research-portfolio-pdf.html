@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portfolio PDF | Dr. Kelsea Schulenberg</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: Letter;
+            margin: 0.55in;
+        }
+
+        :root {
+            --ink: #111827;
+            --muted: #4b5563;
+            --line: #d7dde7;
+            --panel: #f4f7fb;
+            --blue: #0f6f8d;
+            --green: #176b4d;
+            --rose: #a7335d;
+        }
+
+        body {
+            color: var(--ink);
+            font-family: "Arial", "Helvetica", sans-serif;
+            font-size: 10.2pt;
+            line-height: 1.42;
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+
+        h1 {
+            color: var(--ink);
+            font-size: 31pt;
+            letter-spacing: -0.02em;
+            line-height: 1.02;
+            margin-top: 0.08in;
+            max-width: 7in;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--line);
+            color: var(--ink);
+            font-size: 14pt;
+            letter-spacing: 0.02em;
+            margin: 0.24in 0 0.12in;
+            padding-bottom: 0.05in;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 11.3pt;
+            line-height: 1.2;
+            margin-bottom: 0.04in;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            font-size: 8.5pt;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            color: var(--muted);
+            font-size: 12.5pt;
+            line-height: 1.35;
+            margin-top: 0.12in;
+            max-width: 7.1in;
+        }
+
+        .contact {
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+            display: flex;
+            font-size: 9.5pt;
+            gap: 0.18in;
+            justify-content: space-between;
+            padding-bottom: 0.12in;
+        }
+
+        .contact strong {
+            color: var(--ink);
+        }
+
+        .metrics {
+            display: grid;
+            gap: 0.09in;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 0.22in;
+        }
+
+        .metric {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            min-height: 0.85in;
+            padding: 0.11in;
+        }
+
+        .metric strong {
+            color: var(--blue);
+            display: block;
+            font-size: 22pt;
+            line-height: 1;
+            margin-bottom: 0.04in;
+        }
+
+        .metric span {
+            color: var(--muted);
+            display: block;
+            font-size: 8.7pt;
+            line-height: 1.25;
+        }
+
+        .two-col {
+            display: grid;
+            gap: 0.14in;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .three-col {
+            display: grid;
+            gap: 0.12in;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .box {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 0.12in;
+        }
+
+        .box.blue {
+            border-top: 4px solid var(--blue);
+        }
+
+        .box.green {
+            border-top: 4px solid var(--green);
+        }
+
+        .box.rose {
+            border-top: 4px solid var(--rose);
+        }
+
+        ul {
+            margin: 0.06in 0 0;
+            padding-left: 0.16in;
+        }
+
+        li {
+            margin: 0.025in 0;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.045in;
+            margin-top: 0.08in;
+        }
+
+        .pill {
+            background: #eef5f8;
+            border: 1px solid #c9dce5;
+            border-radius: 999px;
+            color: #174d60;
+            font-size: 8.2pt;
+            font-weight: 700;
+            padding: 0.025in 0.07in;
+        }
+
+        .case {
+            break-inside: avoid;
+            margin-bottom: 0.12in;
+        }
+
+        .case-meta {
+            color: var(--blue);
+            font-size: 8.3pt;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .evidence {
+            color: var(--muted);
+            font-size: 9.1pt;
+            margin: 0.04in 0 0.06in;
+        }
+
+        .paper-grid {
+            display: grid;
+            gap: 0.09in;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .paper {
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            break-inside: avoid;
+            padding: 0.09in;
+        }
+
+        .paper h3 {
+            font-size: 10pt;
+        }
+
+        .paper p {
+            color: var(--muted);
+            font-size: 8.8pt;
+            line-height: 1.28;
+            margin-top: 0.03in;
+        }
+
+        .footer {
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 8.2pt;
+            margin-top: 0.18in;
+            padding-top: 0.08in;
+        }
+
+        .page-break {
+            break-before: page;
+        }
+    </style>
+</head>
+<body>
+    <header class="contact">
+        <div><strong>Dr. Kelsea Schulenberg</strong> | Ph.D., Human-Centered Computing</div>
+        <div>kelseas@g.clemson.edu | kelseaschulenberg.github.io | LinkedIn: kelsea-schulenberg-6bb009a9</div>
+    </header>
+
+    <main>
+        <section>
+            <div class="eyebrow">Research portfolio</div>
+            <h1>Mixed-methods research for AI, safety, and emerging technology.</h1>
+            <p class="subhead">I run rigorous quantitative and qualitative research across workplace AI, social VR, trust and safety, media effects, and online communities. I translate experiments, surveys, interviews, and content analysis into evidence teams can use for product, policy, and strategy decisions.</p>
+
+            <div class="metrics">
+                <div class="metric"><strong>703</strong><span>participants recruited for dissertation experiment; 685 valid responses analyzed.</span></div>
+                <div class="metric"><strong>685</strong><span>valid respondents in a 2 x 4 x 2 online factorial experiment on workplace AI.</span></div>
+                <div class="metric"><strong>1,540</strong><span>forum posts/comments analyzed for GenAI and game development research.</span></div>
+                <div class="metric"><strong>280+</strong><span>interview and focus group participant records across AI, VR, games, streaming, and media.</span></div>
+                <div class="metric"><strong>223</strong><span>global survey respondents across six continents/regions for social VR safety research.</span></div>
+                <div class="metric"><strong>181</strong><span>newspaper articles coded for quantitative media-framing analysis.</span></div>
+            </div>
+
+            <h2>Research Methods</h2>
+            <div class="three-col">
+                <div class="box blue">
+                    <h3>Quantitative</h3>
+                    <ul>
+                        <li>Factorial experiments</li>
+                        <li>Survey design</li>
+                        <li>Structural equation modeling</li>
+                        <li>Cross-group comparison</li>
+                        <li>Reliability-based content coding</li>
+                    </ul>
+                </div>
+                <div class="box green">
+                    <h3>Qualitative</h3>
+                    <ul>
+                        <li>Semi-structured interviews</li>
+                        <li>Focus groups</li>
+                        <li>Expert interviews</li>
+                        <li>Thematic and grounded analysis</li>
+                        <li>Cross-case synthesis</li>
+                    </ul>
+                </div>
+                <div class="box rose">
+                    <h3>Translation</h3>
+                    <ul>
+                        <li>Product and policy recommendations</li>
+                        <li>Design principles</li>
+                        <li>AI governance frameworks</li>
+                        <li>Trust and safety guidance</li>
+                        <li>Executive-readable findings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Technology Range</h2>
+            <div class="pill-row">
+                <span class="pill">Workplace AI</span>
+                <span class="pill">Human-AI collaboration</span>
+                <span class="pill">Trust and safety</span>
+                <span class="pill">Social VR</span>
+                <span class="pill">Generative AI</span>
+                <span class="pill">Game development</span>
+                <span class="pill">AR training</span>
+                <span class="pill">Media effects</span>
+                <span class="pill">Online communities</span>
+            </div>
+        </section>
+
+        <section class="page-break">
+            <h2>Selected Research Casework</h2>
+            <div class="two-col">
+                <article class="case box blue">
+                    <div class="case-meta">AI work, evaluation, and governance</div>
+                    <h3>Workplace AI evaluation and job security</h3>
+                    <p>Tested how AI design, worker presentation, partner type, and task type shape evaluation, credit, accountability, and job-security perceptions.</p>
+                    <p class="evidence"><strong>Evidence:</strong> 685 valid experiment respondents, 16 between-subjects conditions, 6 expert interviews.</p>
+                    <ul>
+                        <li><strong>Methods:</strong> factorial experiment, SEM, interviews, survey measures.</li>
+                        <li><strong>Use cases:</strong> AI governance, HR tech, workforce transformation, internal AI adoption.</li>
+                    </ul>
+                </article>
+
+                <article class="case box green">
+                    <div class="case-meta">Trust, safety, and social VR</div>
+                    <h3>Platform safety in embodied online spaces</h3>
+                    <p>Studied harassment, consent, user visibility, AI moderation, and AI companions in social VR.</p>
+                    <p class="evidence"><strong>Evidence:</strong> 223 global survey respondents, 39 moderation/consent interviews, 31 interviews with users from marginalized populations.</p>
+                    <ul>
+                        <li><strong>Methods:</strong> surveys, interviews, thematic analysis, safety-design synthesis.</li>
+                        <li><strong>Use cases:</strong> platform safety, gaming, online communities, AI-assisted moderation.</li>
+                    </ul>
+                </article>
+
+                <article class="case box rose">
+                    <div class="case-meta">Emerging tech communities</div>
+                    <h3>Adoption, creator work, and collaboration</h3>
+                    <p>Mapped how people use new tools for collaboration, social support, streaming, creator work, and game development.</p>
+                    <p class="evidence"><strong>Evidence:</strong> 30 VR collaboration interviews, 29 marginalized population support interviews, 1,540 GenAI forum posts/comments.</p>
+                    <ul>
+                        <li><strong>Methods:</strong> interviews, online community analysis, cross-case synthesis.</li>
+                        <li><strong>Use cases:</strong> creator tools, community products, AI workflows, distributed collaboration.</li>
+                    </ul>
+                </article>
+
+                <article class="case box blue">
+                    <div class="case-meta">Media effects and audience insight</div>
+                    <h3>Risk, responsibility, belonging, and support</h3>
+                    <p>Analyzed how news, podcasts, and online communities shape interpretation, connection, and social support.</p>
+                    <p class="evidence"><strong>Evidence:</strong> 181 coded news articles, 18 focus group participants, 4 independent coders.</p>
+                    <ul>
+                        <li><strong>Methods:</strong> quantitative content analysis, focus groups, survey intake.</li>
+                        <li><strong>Use cases:</strong> communications research, content strategy, public trust, audience insight.</li>
+                    </ul>
+                </article>
+            </div>
+
+            <h2>Research Strengths</h2>
+            <div class="two-col">
+                <div class="box">
+                    <h3>What I bring to large research teams</h3>
+                    <ul>
+                        <li>Comfort with both large quantitative datasets and deep qualitative evidence.</li>
+                        <li>Experience researching sensitive topics: harassment, platform risk, workforce dynamics, safety, and labor.</li>
+                        <li>Ability to span technologies without losing methodological rigor.</li>
+                        <li>Clear communication for cross-functional partners and nonacademic audiences.</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h3>Best-fit roles</h3>
+                    <ul>
+                        <li>Mixed-methods UX Researcher</li>
+                        <li>AI / Responsible AI Researcher</li>
+                        <li>Trust and Safety Researcher</li>
+                        <li>Human-AI Interaction Researcher</li>
+                        <li>Product, policy, or communications research roles requiring quant and qual range</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-break">
+            <h2>Selected Evidence Library</h2>
+            <div class="paper-grid">
+                <article class="paper">
+                    <h3>Workplace dynamics in human-centered AI integration</h3>
+                    <p>703 recruited, 685 valid responses, 2 x 4 x 2 experiment, SEM, and expert interviews.</p>
+                </article>
+                <article class="paper">
+                    <h3>AI professionals' accountability for AI bias mitigation</h3>
+                    <p>20 AI professionals across roles, organizations, and industries.</p>
+                </article>
+                <article class="paper">
+                    <h3>Practitioner perspectives on AI design and development</h3>
+                    <p>Eight AI practitioners interviewed on design decisions and workplace dynamics.</p>
+                </article>
+                <article class="paper">
+                    <h3>AI-based moderation for harassment in social VR</h3>
+                    <p>39 interviews on AI moderation expectations in immersive spaces.</p>
+                </article>
+                <article class="paper">
+                    <h3>AI companions as harassment mitigation in social VR</h3>
+                    <p>20 interviews on AI companions as safety support in social VR.</p>
+                </article>
+                <article class="paper">
+                    <h3>Generative AI in nonprofit indie game development</h3>
+                    <p>1,540 posts/comments analyzed from online creative communities.</p>
+                </article>
+                <article class="paper">
+                    <h3>User visibility and harassment in social VR</h3>
+                    <p>223 social VR users across six continents/regions.</p>
+                </article>
+                <article class="paper">
+                    <h3>Preventing interpersonal harm in social VR through consent</h3>
+                    <p>39 user interviews translated into consent-oriented design implications.</p>
+                </article>
+                <article class="paper">
+                    <h3>Marginalized users managing harassment risks in social VR</h3>
+                    <p>31 social VR users from marginalized populations interviewed on risk, visibility, and mitigation.</p>
+                </article>
+                <article class="paper">
+                    <h3>Everyday collaboration in social VR</h3>
+                    <p>30 interviews on embodiment, co-presence, and collaboration.</p>
+                </article>
+                <article class="paper">
+                    <h3>Social support for marginalized populations in social VR</h3>
+                    <p>29 interviews across countries and cultures on belonging and social support.</p>
+                </article>
+                <article class="paper">
+                    <h3>Newspaper framing of COVID-19 public health disparities</h3>
+                    <p>181 articles coded with a four-coder reliability workflow.</p>
+                </article>
+                <article class="paper">
+                    <h3>True crime podcast fan communities</h3>
+                    <p>Introductory survey and focus groups with 18 participants.</p>
+                </article>
+                <article class="paper">
+                    <h3>TitleIX: mobile augmented reality bystander intervention training</h3>
+                    <p>AR training prototype for campus bystander intervention.</p>
+                </article>
+            </div>
+
+            <p class="footer">Full papers and web portfolio: kelseaschulenberg.github.io/research-portfolio.html</p>
+        </section>
+    </main>
+</body>
+</html>
